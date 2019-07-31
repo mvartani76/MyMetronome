@@ -9,9 +9,13 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    @IBOutlet var knob: Knob3!
+    
     @IBOutlet var startStopButton: UIButton!
     @IBOutlet var tickLabel: UILabel!
+    @IBOutlet var bpmLabel: UILabel!
+    
+    
     
     var isToggled = false
     
@@ -33,6 +37,9 @@ class FirstViewController: UIViewController {
         }
     }
     
+    @IBAction func handleKnobChange(_ sender: Any) {
+        updateBpm()
+    }
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
@@ -45,8 +52,10 @@ class FirstViewController: UIViewController {
     }
     
     private func updateBpm() {
-        let metronomeBpm = Int(myMetronome.bpm)
+        //let metronomeBpm = Int(myMetronome.bpm)
+        myMetronome.bpm = Float(knob.value)
         //bpmLabel.text = "\(metronomeBpm)"
+        bpmLabel.text = String(format: "%.2f", knob.value)
     }
     
 
