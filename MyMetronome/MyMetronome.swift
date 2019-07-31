@@ -59,8 +59,11 @@ class Metronome {
         DispatchQueue.main.asyncAfter(deadline: nextTick) { [weak self] in
             self?.tick()
         }
-        
-        player.play(atTime: interval)
+        // player.play(atTime) is not playing any sound
+        // https://stackoverflow.com/questions/43899431/why-calling-audioplayer-playattime-delay-makes-no-sound-regardless-of-the-val
+        // The above link says we need to add player.deviceCurrentTime but then the bpm is much slower
+        //player.play(atTime: interval)
+        player.play()
         onTick?(nextTick)
     }
 }
