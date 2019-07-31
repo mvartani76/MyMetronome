@@ -25,7 +25,7 @@ class Metronome {
     
     let player: AVAudioPlayer = {
         do {
-            let soundURL = Bundle.main.url(forResource: "Woodblock", withExtension: "wav")!
+            let soundURL = Bundle.main.url(forResource: "/Samples/Woodblock", withExtension: "wav")!
             let soundFile = try AVAudioFile(forReading: soundURL)
             let player = try AVAudioPlayer(contentsOf: soundURL)
             return player
@@ -45,7 +45,7 @@ class Metronome {
     
     private func stop() {
         player.stop()
-        print("Stoping metronome")
+        print("Stopping metronome")
     }
     
     private func tick() {
