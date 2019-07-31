@@ -15,6 +15,7 @@
 		227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227378C822CF0818009DC2FE /* LaunchScreen.storyboard */; };
 		227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378D122CF09A4009DC2FE /* MyMetronome.swift */; };
 		227378D422CF14E7009DC2FE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 227378D322CF14E7009DC2FE /* Samples */; };
+		22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		227378CB22CF0818009DC2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227378D122CF09A4009DC2FE /* MyMetronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMetronome.swift; sourceTree = "<group>"; };
 		227378D322CF14E7009DC2FE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Samples; path = Assets.xcassets/Samples; sourceTree = "<group>"; };
+		22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				227378BC22CF0811009DC2FE /* MyMetronome */,
 				227378BB22CF0811009DC2FE /* Products */,
+				22929D6D22F1FBE600E0B4FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +75,14 @@
 				227378D322CF14E7009DC2FE /* Samples */,
 			);
 			path = MyMetronome;
+			sourceTree = "<group>";
+		};
+		22929D6D22F1FBE600E0B4FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
