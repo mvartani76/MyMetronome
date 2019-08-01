@@ -16,6 +16,7 @@
 		227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378D122CF09A4009DC2FE /* MyMetronome.swift */; };
 		227378D422CF14E7009DC2FE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 227378D322CF14E7009DC2FE /* Samples */; };
 		22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */; };
+		22929D7122F22EBF00E0B4FB /* knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22929D7022F22EBF00E0B4FB /* knob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		227378D122CF09A4009DC2FE /* MyMetronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMetronome.swift; sourceTree = "<group>"; };
 		227378D322CF14E7009DC2FE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Samples; path = Assets.xcassets/Samples; sourceTree = "<group>"; };
 		22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		22929D7022F22EBF00E0B4FB /* knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				227378BF22CF0811009DC2FE /* FirstViewController.swift */,
 				227378C122CF0811009DC2FE /* SecondViewController.swift */,
 				227378C322CF0811009DC2FE /* Main.storyboard */,
+				22929D7022F22EBF00E0B4FB /* knob.swift */,
 				227378C622CF0818009DC2FE /* Assets.xcassets */,
 				227378C822CF0818009DC2FE /* LaunchScreen.storyboard */,
 				227378CB22CF0818009DC2FE /* Info.plist */,
@@ -161,6 +164,7 @@
 				227378C222CF0811009DC2FE /* SecondViewController.swift in Sources */,
 				227378BE22CF0811009DC2FE /* AppDelegate.swift in Sources */,
 				227378C022CF0811009DC2FE /* FirstViewController.swift in Sources */,
+				22929D7122F22EBF00E0B4FB /* knob.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
