@@ -45,9 +45,13 @@ class FirstViewController: UIViewController {
         if !isToggled {
             myMetronome.enabled = true
             isToggled = true
+            startStopButton.setTitle("Stop", for: .normal)
+            startStopButton.backgroundColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
         } else {
             myMetronome.enabled = false
             isToggled = false
+            startStopButton.setTitle("Start", for: .normal)
+            startStopButton.backgroundColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
         }
     }
     
