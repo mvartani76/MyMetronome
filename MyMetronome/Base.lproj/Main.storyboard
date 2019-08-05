@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UId-0k-51N" userLabel="TopLabelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="My Metronome" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                                <rect key="frame" x="0.0" y="24.5" width="375" height="43"/>
+                                                <rect key="frame" x="0.0" y="18.5" width="375" height="43"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auD-Uf-gyi" customClass="Knob3" customModule="MyMetronome" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="230"/>
+                                        <rect key="frame" x="0.0" y="79.5" width="375" height="199.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
@@ -57,10 +57,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AM-Dl-LFM" userLabel="BPMLabelView">
-                                        <rect key="frame" x="0.0" y="322" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="279" width="375" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRp-bZ-p0l">
-                                                <rect key="frame" x="37.5" y="9" width="300" height="74"/>
+                                                <rect key="frame" x="37.5" y="8" width="300" height="64"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -74,11 +74,27 @@
                                             <constraint firstItem="bRp-bZ-p0l" firstAttribute="centerY" secondItem="8AM-Dl-LFM" secondAttribute="centerY" id="ytZ-xP-tb1"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QZ-yW-DTD" userLabel="MeterViewContainer">
+                                        <rect key="frame" x="0.0" y="359" width="375" height="79.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFY-a2-HDJ" userLabel="MeterView" customClass="MeterView" customModule="MyMetronome" customModuleProvider="target">
+                                                <rect key="frame" x="37.5" y="0.0" width="300" height="79.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="centerY" secondItem="0QZ-yW-DTD" secondAttribute="centerY" id="6RZ-hn-kvs"/>
+                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="height" secondItem="0QZ-yW-DTD" secondAttribute="height" id="8dY-Ce-ujS"/>
+                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="centerX" secondItem="0QZ-yW-DTD" secondAttribute="centerX" id="Oe5-a2-7v5"/>
+                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="width" secondItem="0QZ-yW-DTD" secondAttribute="width" multiplier="0.8" id="fv4-0C-AR2"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-bj-yAr" userLabel="TickLabelView">
-                                        <rect key="frame" x="0.0" y="414" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="438.5" width="375" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5t-pg-f7x">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -93,10 +109,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Aa-bf-VZh" userLabel="StartStopButtonView">
-                                        <rect key="frame" x="0.0" y="506" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="518.5" width="375" height="79.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CL7-lA-SN8">
-                                                <rect key="frame" x="37.5" y="9" width="300" height="74"/>
+                                                <rect key="frame" x="37.5" y="7.5" width="300" height="64"/>
                                                 <color key="backgroundColor" red="0.10980392156862745" green="0.33333333333333331" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Start">
@@ -124,10 +140,12 @@
                                 <constraints>
                                     <constraint firstItem="auD-Uf-gyi" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" multiplier="2.5" id="4eZ-6h-vPB"/>
                                     <constraint firstItem="auD-Uf-gyi" firstAttribute="width" secondItem="UId-0k-51N" secondAttribute="width" id="9aj-Rs-PHs"/>
+                                    <constraint firstItem="0QZ-yW-DTD" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" id="J4S-mA-rUO"/>
                                     <constraint firstItem="8AM-Dl-LFM" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="KyX-Dz-hnt"/>
                                     <constraint firstItem="3Aa-bf-VZh" firstAttribute="width" secondItem="GvV-bj-yAr" secondAttribute="width" id="PwW-KO-By9"/>
                                     <constraint firstItem="3Aa-bf-VZh" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="gnf-v5-PQD"/>
                                     <constraint firstItem="GvV-bj-yAr" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" id="pnr-fJ-mND"/>
+                                    <constraint firstItem="0QZ-yW-DTD" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="rmG-Ne-k5W"/>
                                     <constraint firstItem="8AM-Dl-LFM" firstAttribute="width" secondItem="auD-Uf-gyi" secondAttribute="width" id="yjL-4m-b2A"/>
                                     <constraint firstItem="GvV-bj-yAr" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="zYx-Zs-SKK"/>
                                 </constraints>
@@ -146,6 +164,7 @@
                     <connections>
                         <outlet property="bpmLabel" destination="bRp-bZ-p0l" id="8Nr-bm-MJL"/>
                         <outlet property="knob" destination="auD-Uf-gyi" id="lfo-r5-Lzm"/>
+                        <outlet property="myMeterView" destination="CFY-a2-HDJ" id="OQu-GA-TOY"/>
                         <outlet property="startStopButton" destination="CL7-lA-SN8" id="s1t-m8-LIo"/>
                         <outlet property="tickLabel" destination="N5t-pg-f7x" id="F8i-mo-gYF"/>
                     </connections>

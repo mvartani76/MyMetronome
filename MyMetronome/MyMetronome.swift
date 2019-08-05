@@ -10,6 +10,9 @@ import Foundation
 import AVFoundation
 
 class Metronome {
+    var beatUnit = 4
+    var beatBar = 4
+    
     var bpm: Float = 60.0 { didSet {
         bpm = min(300.0,max(30.0,bpm))
         }}

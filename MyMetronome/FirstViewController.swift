@@ -10,12 +10,11 @@ import UIKit
 
 class FirstViewController: UIViewController {
     @IBOutlet var knob: Knob3!
+    @IBOutlet var myMeterView: MeterView!
     
     @IBOutlet var startStopButton: UIButton!
     @IBOutlet var tickLabel: UILabel!
     @IBOutlet var bpmLabel: UILabel!
-    
-    
     
     var isToggled = false
     
@@ -28,6 +27,9 @@ class FirstViewController: UIViewController {
             self.animateTick()
         }
         updateBpm()
+        myMeterView.numBeats = 4
+        // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
+        myMeterView.currentBeat = 0
     }
     
     private func animateTick() {
@@ -35,6 +37,11 @@ class FirstViewController: UIViewController {
         UIView.animate(withDuration: 0.35) {
             self.tickLabel.alpha = 0.0
         }
+
+        print(myMeterView.currentBeat)
+        myMeterView.setNeedsDisplay()
+        
+        myMeterView.updateMeter()
     }
     
     @IBAction func handleKnobChange(_ sender: Any) {
