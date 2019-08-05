@@ -35,9 +35,9 @@ import UIKit.UIGestureRecognizerSubclass
     public private(set) var pointerLayer = CAShapeLayer()
     
     /// Start angle of the marker.
-    public var startAngle = CGFloat.pi * 0 // -CGFloat.pi * 11 / 8.0
+    public var startAngle = -CGFloat.pi * 11 / 8.0
     /// End angle of the marker.
-    public var endAngle = CGFloat.pi * 2 // CGFloat.pi * 3 / 8.0
+    public var endAngle =  CGFloat.pi * 3 / 8.0
     
     /// Knob gesture recognizer.
     public private(set) var gestureRecognizer: Knob3GestureRecognizer!
