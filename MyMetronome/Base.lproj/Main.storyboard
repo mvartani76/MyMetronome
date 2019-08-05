@@ -56,36 +56,116 @@
                                             <action selector="handleKnobChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="hli-e8-8Ix"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AM-Dl-LFM" userLabel="BPMLabelView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AM-Dl-LFM" userLabel="BPMStackContainer">
                                         <rect key="frame" x="0.0" y="279" width="375" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRp-bZ-p0l">
-                                                <rect key="frame" x="37.5" y="8" width="300" height="64"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh8-TR-aYR" userLabel="BPMStackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-M5-NE4" userLabel="DecButtonView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="80"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-s6-IAK" userLabel="DecButton">
+                                                                <rect key="frame" x="12.5" y="8" width="100" height="64"/>
+                                                                <color key="backgroundColor" red="0.10980392160000001" green="0.33333333329999998" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                <state key="normal" title="-">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="decrementBPM:" destination="9pv-A4-QxB" eventType="touchUpInside" id="3tK-Jv-3jY"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="AhR-s6-IAK" firstAttribute="width" secondItem="5R0-M5-NE4" secondAttribute="width" multiplier="0.8" id="7hf-64-5YJ"/>
+                                                            <constraint firstItem="AhR-s6-IAK" firstAttribute="centerX" secondItem="5R0-M5-NE4" secondAttribute="centerX" id="ZtC-xH-xi6"/>
+                                                            <constraint firstItem="AhR-s6-IAK" firstAttribute="centerY" secondItem="5R0-M5-NE4" secondAttribute="centerY" id="gCU-KK-y3x"/>
+                                                            <constraint firstItem="AhR-s6-IAK" firstAttribute="height" secondItem="5R0-M5-NE4" secondAttribute="height" multiplier="0.8" id="uer-8W-c93"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyU-Hq-3ca" userLabel="BPMLabelView">
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="80"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRp-bZ-p0l">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="80"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="width" secondItem="SyU-Hq-3ca" secondAttribute="width" id="Bpd-IZ-u58"/>
+                                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="centerY" secondItem="SyU-Hq-3ca" secondAttribute="centerY" id="dqQ-PX-we1"/>
+                                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="centerX" secondItem="SyU-Hq-3ca" secondAttribute="centerX" id="kNa-sD-xPE"/>
+                                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="height" secondItem="SyU-Hq-3ca" secondAttribute="height" id="pIG-nz-sLa"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFc-Eu-2cC" userLabel="IncButtonView">
+                                                        <rect key="frame" x="250" y="0.0" width="125" height="80"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-xQ-TPV" userLabel="IncButton">
+                                                                <rect key="frame" x="12.5" y="8" width="100" height="64"/>
+                                                                <color key="backgroundColor" red="0.10980392160000001" green="0.33333333329999998" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                <state key="normal" title="+">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="incrementBPM:" destination="9pv-A4-QxB" eventType="touchUpInside" id="vrC-oH-bul"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="ho1-xQ-TPV" firstAttribute="centerX" secondItem="rFc-Eu-2cC" secondAttribute="centerX" id="Jd9-em-jbo"/>
+                                                            <constraint firstItem="ho1-xQ-TPV" firstAttribute="width" secondItem="rFc-Eu-2cC" secondAttribute="width" multiplier="0.8" id="KZ4-bf-h1T"/>
+                                                            <constraint firstItem="ho1-xQ-TPV" firstAttribute="height" secondItem="rFc-Eu-2cC" secondAttribute="height" multiplier="0.8" id="Uwe-en-7XE"/>
+                                                            <constraint firstItem="ho1-xQ-TPV" firstAttribute="centerY" secondItem="rFc-Eu-2cC" secondAttribute="centerY" id="vEF-wt-std"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="rFc-Eu-2cC" firstAttribute="width" secondItem="SyU-Hq-3ca" secondAttribute="width" id="9DA-gR-BpI"/>
+                                                    <constraint firstItem="SyU-Hq-3ca" firstAttribute="height" secondItem="dh8-TR-aYR" secondAttribute="height" id="V7t-tF-Rdz"/>
+                                                    <constraint firstItem="rFc-Eu-2cC" firstAttribute="height" secondItem="dh8-TR-aYR" secondAttribute="height" id="XOO-Ms-VVv"/>
+                                                    <constraint firstItem="5R0-M5-NE4" firstAttribute="height" secondItem="dh8-TR-aYR" secondAttribute="height" id="hjC-Cd-hUM"/>
+                                                    <constraint firstItem="SyU-Hq-3ca" firstAttribute="width" secondItem="5R0-M5-NE4" secondAttribute="width" id="ikc-UN-lUa"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="height" secondItem="8AM-Dl-LFM" secondAttribute="height" multiplier="0.8" id="2HU-Af-hxr"/>
-                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="centerX" secondItem="8AM-Dl-LFM" secondAttribute="centerX" id="ANG-Dw-VBb"/>
-                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" multiplier="0.8" id="seq-7u-zGG"/>
-                                            <constraint firstItem="bRp-bZ-p0l" firstAttribute="centerY" secondItem="8AM-Dl-LFM" secondAttribute="centerY" id="ytZ-xP-tb1"/>
+                                            <constraint firstItem="dh8-TR-aYR" firstAttribute="centerY" secondItem="8AM-Dl-LFM" secondAttribute="centerY" id="GJa-eM-khf"/>
+                                            <constraint firstItem="dh8-TR-aYR" firstAttribute="height" secondItem="8AM-Dl-LFM" secondAttribute="height" id="R4u-KD-2m8"/>
+                                            <constraint firstItem="dh8-TR-aYR" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" id="XNR-wZ-h9I"/>
+                                            <constraint firstItem="dh8-TR-aYR" firstAttribute="centerX" secondItem="8AM-Dl-LFM" secondAttribute="centerX" id="bI0-nF-m3t"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QZ-yW-DTD" userLabel="MeterViewContainer">
                                         <rect key="frame" x="0.0" y="359" width="375" height="79.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFY-a2-HDJ" userLabel="MeterView" customClass="MeterView" customModule="MyMetronome" customModuleProvider="target">
-                                                <rect key="frame" x="37.5" y="0.0" width="300" height="79.5"/>
+                                                <rect key="frame" x="37.5" y="8" width="300" height="63.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="centerY" secondItem="0QZ-yW-DTD" secondAttribute="centerY" id="6RZ-hn-kvs"/>
-                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="height" secondItem="0QZ-yW-DTD" secondAttribute="height" id="8dY-Ce-ujS"/>
+                                            <constraint firstItem="CFY-a2-HDJ" firstAttribute="height" secondItem="0QZ-yW-DTD" secondAttribute="height" multiplier="0.8" id="8dY-Ce-ujS"/>
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="centerX" secondItem="0QZ-yW-DTD" secondAttribute="centerX" id="Oe5-a2-7v5"/>
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="width" secondItem="0QZ-yW-DTD" secondAttribute="width" multiplier="0.8" id="fv4-0C-AR2"/>
                                         </constraints>
@@ -163,6 +243,8 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="bpmLabel" destination="bRp-bZ-p0l" id="8Nr-bm-MJL"/>
+                        <outlet property="decBPMButton" destination="AhR-s6-IAK" id="Jlt-6F-QDj"/>
+                        <outlet property="incBPMButton" destination="ho1-xQ-TPV" id="gdu-yt-doQ"/>
                         <outlet property="knob" destination="auD-Uf-gyi" id="lfo-r5-Lzm"/>
                         <outlet property="myMeterView" destination="CFY-a2-HDJ" id="OQu-GA-TOY"/>
                         <outlet property="startStopButton" destination="CL7-lA-SN8" id="s1t-m8-LIo"/>

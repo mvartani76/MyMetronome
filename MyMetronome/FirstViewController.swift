@@ -15,6 +15,8 @@ class FirstViewController: UIViewController {
     @IBOutlet var startStopButton: UIButton!
     @IBOutlet var tickLabel: UILabel!
     @IBOutlet var bpmLabel: UILabel!
+    @IBOutlet var incBPMButton: UIButton!
+    @IBOutlet var decBPMButton: UIButton!
     
     var isToggled = false
     
@@ -26,7 +28,7 @@ class FirstViewController: UIViewController {
         myMetronome.onTick = { (nextTick) in
             self.animateTick()
         }
-        updateBpm()
+        updateBpm(newBPM: Float(knob.value))
         myMeterView.numBeats = 4
         // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
         myMeterView.currentBeat = 0
@@ -45,7 +47,7 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func handleKnobChange(_ sender: Any) {
-        updateBpm()
+        updateBpm(newBPM: Float(knob.value))
     }
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
@@ -62,11 +64,20 @@ class FirstViewController: UIViewController {
         }
     }
     
-    private func updateBpm() {
-        //let metronomeBpm = Int(myMetronome.bpm)
-        myMetronome.bpm = Float(knob.value)
-        //bpmLabel.text = "\(metronomeBpm)"
-        bpmLabel.text = String(format: "%.2f", knob.value)
+    
+    @IBAction func incrementBPM(_ sender: UIButton) {
+        updateBpm(newBPM: myMetronome.bpm + 1.0)
+    }
+    
+    @IBAction func decrementBPM(_ sender: UIButton) {
+        updateBpm(newBPM: myMetronome.bpm - 1.0)
+    }
+    
+    
+    private func updateBpm(newBPM: Float) {
+        myMetronome.bpm = min(max(30, newBPM), 300)
+        bpmLabel.text = String(format: "%.0f", myMetronome.bpm)
+        knob.value = myMetronome.bpm
     }
     
 
