@@ -154,11 +154,83 @@
                                             <constraint firstItem="dh8-TR-aYR" firstAttribute="centerX" secondItem="8AM-Dl-LFM" secondAttribute="centerX" id="bI0-nF-m3t"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QZ-yW-DTD" userLabel="MeterViewContainer">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGH-Ke-vpZ" userLabel="TimeSigStackContainer">
                                         <rect key="frame" x="0.0" y="359" width="375" height="79.5"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-cc-SxN" userLabel="TSStackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPo-Ls-D05" userLabel="NumBeatsView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="79.5"/>
+                                                        <subviews>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caC-o0-xBv" userLabel="NumBeatsPickerView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="79.5"/>
+                                                            </pickerView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="caC-o0-xBv" firstAttribute="centerX" secondItem="GPo-Ls-D05" secondAttribute="centerX" id="5Kr-t9-Lzg"/>
+                                                            <constraint firstItem="caC-o0-xBv" firstAttribute="width" secondItem="GPo-Ls-D05" secondAttribute="width" id="Rkh-cq-tIJ"/>
+                                                            <constraint firstItem="caC-o0-xBv" firstAttribute="height" secondItem="GPo-Ls-D05" secondAttribute="height" id="bfm-FE-DpX"/>
+                                                            <constraint firstItem="caC-o0-xBv" firstAttribute="centerY" secondItem="GPo-Ls-D05" secondAttribute="centerY" id="oQO-uj-MHY"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mve-lY-6bB" userLabel="TSLabelView">
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="79.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MO-Pw-8ly">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="79.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="0MO-Pw-8ly" firstAttribute="height" secondItem="mve-lY-6bB" secondAttribute="height" id="8i4-Xq-Uw5"/>
+                                                            <constraint firstItem="0MO-Pw-8ly" firstAttribute="centerY" secondItem="mve-lY-6bB" secondAttribute="centerY" id="CTh-ks-zKW"/>
+                                                            <constraint firstItem="0MO-Pw-8ly" firstAttribute="width" secondItem="mve-lY-6bB" secondAttribute="width" id="EMz-oD-WIt"/>
+                                                            <constraint firstItem="0MO-Pw-8ly" firstAttribute="centerX" secondItem="mve-lY-6bB" secondAttribute="centerX" id="HtY-Xd-RV8"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-WN-BCR" userLabel="BeatNoteView">
+                                                        <rect key="frame" x="250" y="0.0" width="125" height="79.5"/>
+                                                        <subviews>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xly-dX-uuq" userLabel="BeatNotePickerView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="79.5"/>
+                                                            </pickerView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="xly-dX-uuq" firstAttribute="width" secondItem="dvf-WN-BCR" secondAttribute="width" id="BBR-fK-knh"/>
+                                                            <constraint firstItem="xly-dX-uuq" firstAttribute="height" secondItem="dvf-WN-BCR" secondAttribute="height" id="qR2-wK-p58"/>
+                                                            <constraint firstItem="xly-dX-uuq" firstAttribute="centerY" secondItem="dvf-WN-BCR" secondAttribute="centerY" id="s49-vc-vEe"/>
+                                                            <constraint firstItem="xly-dX-uuq" firstAttribute="centerX" secondItem="dvf-WN-BCR" secondAttribute="centerX" id="yFV-5z-1kl"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="GPo-Ls-D05" firstAttribute="height" secondItem="YgK-cc-SxN" secondAttribute="height" id="CqS-2D-ynL"/>
+                                                    <constraint firstItem="dvf-WN-BCR" firstAttribute="width" secondItem="mve-lY-6bB" secondAttribute="width" id="HaP-6c-JEQ"/>
+                                                    <constraint firstItem="dvf-WN-BCR" firstAttribute="height" secondItem="YgK-cc-SxN" secondAttribute="height" id="cap-7J-DBX"/>
+                                                    <constraint firstItem="mve-lY-6bB" firstAttribute="height" secondItem="YgK-cc-SxN" secondAttribute="height" id="dJM-3s-oJP"/>
+                                                    <constraint firstItem="mve-lY-6bB" firstAttribute="width" secondItem="GPo-Ls-D05" secondAttribute="width" id="j7u-VA-Xe6"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="YgK-cc-SxN" firstAttribute="width" secondItem="wGH-Ke-vpZ" secondAttribute="width" id="Oa5-kr-wHV"/>
+                                            <constraint firstItem="YgK-cc-SxN" firstAttribute="height" secondItem="wGH-Ke-vpZ" secondAttribute="height" id="Ube-tN-RLj"/>
+                                            <constraint firstItem="YgK-cc-SxN" firstAttribute="centerX" secondItem="wGH-Ke-vpZ" secondAttribute="centerX" id="uf8-Vb-7o6"/>
+                                            <constraint firstItem="YgK-cc-SxN" firstAttribute="centerY" secondItem="wGH-Ke-vpZ" secondAttribute="centerY" id="zgO-T1-td6"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QZ-yW-DTD" userLabel="MeterViewContainer">
+                                        <rect key="frame" x="0.0" y="438.5" width="375" height="80"/>
+                                        <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFY-a2-HDJ" userLabel="MeterView" customClass="MeterView" customModule="MyMetronome" customModuleProvider="target">
-                                                <rect key="frame" x="37.5" y="8" width="300" height="63.5"/>
+                                                <rect key="frame" x="37.5" y="8" width="300" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -168,24 +240,6 @@
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="height" secondItem="0QZ-yW-DTD" secondAttribute="height" multiplier="0.8" id="8dY-Ce-ujS"/>
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="centerX" secondItem="0QZ-yW-DTD" secondAttribute="centerX" id="Oe5-a2-7v5"/>
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="width" secondItem="0QZ-yW-DTD" secondAttribute="width" multiplier="0.8" id="fv4-0C-AR2"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-bj-yAr" userLabel="TickLabelView">
-                                        <rect key="frame" x="0.0" y="438.5" width="375" height="80"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5t-pg-f7x">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="N5t-pg-f7x" firstAttribute="height" secondItem="GvV-bj-yAr" secondAttribute="height" id="K6Y-Zk-h6d"/>
-                                            <constraint firstItem="N5t-pg-f7x" firstAttribute="centerY" secondItem="GvV-bj-yAr" secondAttribute="centerY" id="QFy-f8-vxL"/>
-                                            <constraint firstItem="N5t-pg-f7x" firstAttribute="centerX" secondItem="GvV-bj-yAr" secondAttribute="centerX" id="nHb-un-FYm"/>
-                                            <constraint firstItem="N5t-pg-f7x" firstAttribute="width" secondItem="GvV-bj-yAr" secondAttribute="width" id="xpc-XL-eQZ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Aa-bf-VZh" userLabel="StartStopButtonView">
@@ -219,15 +273,14 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="auD-Uf-gyi" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" multiplier="2.5" id="4eZ-6h-vPB"/>
+                                    <constraint firstItem="wGH-Ke-vpZ" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="5uN-tg-IhY"/>
                                     <constraint firstItem="auD-Uf-gyi" firstAttribute="width" secondItem="UId-0k-51N" secondAttribute="width" id="9aj-Rs-PHs"/>
                                     <constraint firstItem="0QZ-yW-DTD" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" id="J4S-mA-rUO"/>
                                     <constraint firstItem="8AM-Dl-LFM" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="KyX-Dz-hnt"/>
-                                    <constraint firstItem="3Aa-bf-VZh" firstAttribute="width" secondItem="GvV-bj-yAr" secondAttribute="width" id="PwW-KO-By9"/>
+                                    <constraint firstItem="wGH-Ke-vpZ" firstAttribute="width" secondItem="UId-0k-51N" secondAttribute="width" id="ecI-MK-dXv"/>
                                     <constraint firstItem="3Aa-bf-VZh" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="gnf-v5-PQD"/>
-                                    <constraint firstItem="GvV-bj-yAr" firstAttribute="width" secondItem="8AM-Dl-LFM" secondAttribute="width" id="pnr-fJ-mND"/>
                                     <constraint firstItem="0QZ-yW-DTD" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="rmG-Ne-k5W"/>
                                     <constraint firstItem="8AM-Dl-LFM" firstAttribute="width" secondItem="auD-Uf-gyi" secondAttribute="width" id="yjL-4m-b2A"/>
-                                    <constraint firstItem="GvV-bj-yAr" firstAttribute="height" secondItem="UId-0k-51N" secondAttribute="height" id="zYx-Zs-SKK"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -242,13 +295,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="beatNotePickerView" destination="xly-dX-uuq" id="9qe-X1-vY8"/>
                         <outlet property="bpmLabel" destination="bRp-bZ-p0l" id="8Nr-bm-MJL"/>
                         <outlet property="decBPMButton" destination="AhR-s6-IAK" id="Jlt-6F-QDj"/>
                         <outlet property="incBPMButton" destination="ho1-xQ-TPV" id="gdu-yt-doQ"/>
                         <outlet property="knob" destination="auD-Uf-gyi" id="lfo-r5-Lzm"/>
                         <outlet property="myMeterView" destination="CFY-a2-HDJ" id="OQu-GA-TOY"/>
+                        <outlet property="numBeatsPickerView" destination="caC-o0-xBv" id="TfP-8r-LZN"/>
                         <outlet property="startStopButton" destination="CL7-lA-SN8" id="s1t-m8-LIo"/>
-                        <outlet property="tickLabel" destination="N5t-pg-f7x" id="F8i-mo-gYF"/>
+                        <outlet property="timeSignatureLabel" destination="0MO-Pw-8ly" id="p45-2c-VNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
