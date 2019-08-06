@@ -13,8 +13,8 @@ class Metronome {
     var beatUnit = 4
     var beatBar = 4
     
-    var bpm: Float = 60.0 { didSet {
-        bpm = min(300.0,max(30.0,bpm))
+    var bpm: Double = .startingTempo { didSet {
+        bpm = min(.defaultMaxTempo, max(.defaultMinTempo, bpm))
         }}
     var enabled: Bool = false { didSet {
         if enabled {
@@ -57,7 +57,7 @@ class Metronome {
             nextTick <= DispatchTime.now()
             else { return }
         
-        let interval: TimeInterval = 60.0 / TimeInterval(bpm)
+        let interval: TimeInterval = .numSecondsInMinute / TimeInterval(bpm)
         nextTick = nextTick + interval
         DispatchQueue.main.asyncAfter(deadline: nextTick) { [weak self] in
             self?.tick()

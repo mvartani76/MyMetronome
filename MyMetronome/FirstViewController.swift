@@ -14,8 +14,8 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var numBeatsData = ["1", "2", "3", "4", "5", "6"]
     var beatNoteData = ["1", "2", "3", "4", "5", "6"]
     
-    var numBeats: Int = 4
-    var beatNote: Int = 4
+    var numBeats: Int = .defaultNumBeats
+    var beatNote: Int = .defaultBeatNote
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -42,9 +42,9 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == numBeatsPickerView {
-            numBeats = Int(numBeatsData[row]) ?? 4
+            numBeats = Int(numBeatsData[row]) ?? .defaultNumBeats
         } else if pickerView == beatNotePickerView {
-            beatNote = Int(beatNoteData[row]) ?? 4
+            beatNote = Int(beatNoteData[row]) ?? .defaultNumBeats
         }
         updateTimeSignature(numBeats: numBeats, beatNote: beatNote)
     }
@@ -79,7 +79,8 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.beatNotePickerView.delegate = self
         self.beatNotePickerView.dataSource = self
         
-        myMeterView.numBeats = 4
+        myMeterView.numBeats = .defaultNumBeats
+        knob.value = Float(myMetronome.bpm)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,14 +89,14 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         myMetronome.onTick = { (nextTick) in
             self.animateTick()
         }
-        updateBpm(newBPM: Float(knob.value))
-        updateTimeSignature(numBeats: 4, beatNote: 4)
+        updateBpm(newBPM: Double(knob.value))
+        updateTimeSignature(numBeats: .defaultNumBeats, beatNote: .defaultBeatNote)
         
         // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
         myMeterView.currentBeat = 0
         
-        numBeatsPickerView.selectRow(3, inComponent: 0, animated: true)
-        beatNotePickerView.selectRow(3, inComponent: 0, animated: true)
+        numBeatsPickerView.selectRow(numBeatsData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
+        beatNotePickerView.selectRow(beatNoteData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
     }
     
     private func animateTick() {
@@ -104,7 +105,7 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func handleKnobChange(_ sender: Any) {
-        updateBpm(newBPM: Float(knob.value))
+        updateBpm(newBPM: Double(knob.value))
     }
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
@@ -121,7 +122,6 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    
     @IBAction func incrementBPM(_ sender: UIButton) {
         updateBpm(newBPM: myMetronome.bpm + 1.0)
     }
@@ -131,10 +131,10 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
 
-    private func updateBpm(newBPM: Float) {
-        myMetronome.bpm = min(max(30, newBPM), 300)
+    private func updateBpm(newBPM: Double) {
+        myMetronome.bpm = min(max(.defaultMinTempo, newBPM), .defaultMaxTempo)
         bpmLabel.text = String(format: "%.0f", myMetronome.bpm)
-        knob.value = myMetronome.bpm
+        knob.value = Float(myMetronome.bpm)
     }
     
     private func updateTimeSignature(numBeats: Int, beatNote: Int) {

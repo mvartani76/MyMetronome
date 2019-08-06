@@ -15,10 +15,10 @@ import UIKit.UIGestureRecognizerSubclass
     @IBInspectable public var continuous = true
     
     /// The minimum value of the knob. Defaults to 0.0.
-    @IBInspectable public var minimumValue: Float = 0.0 { didSet { drawKnob3() }}
+    @IBInspectable public var minimumValue: Float = KnobConstants.minknobvalue { didSet { drawKnob3() }}
     
     /// The maximum value of the knob. Defaults to 1.0.
-    @IBInspectable public var maximumValue: Float = 1.0 { didSet { drawKnob3() }}
+    @IBInspectable public var maximumValue: Float = KnobConstants.maxknobvalue { didSet { drawKnob3() }}
     
     /// Value of the knob. Also known as progress.
     @IBInspectable public var value: Float = 0.0 {
@@ -35,9 +35,9 @@ import UIKit.UIGestureRecognizerSubclass
     public private(set) var pointerLayer = CAShapeLayer()
     
     /// Start angle of the marker.
-    public var startAngle = -CGFloat.pi * 11 / 8.0
+    public var startAngle = KnobConstants.startKnobAngle
     /// End angle of the marker.
-    public var endAngle =  CGFloat.pi * 3 / 8.0
+    public var endAngle = KnobConstants.endKnobAngle
     
     /// Knob gesture recognizer.
     public private(set) var gestureRecognizer: Knob3GestureRecognizer!
@@ -89,8 +89,8 @@ import UIKit.UIGestureRecognizerSubclass
         // Draw base ring.
         let center = CGPoint(x: outerLayer.bounds.width / 2, y: outerLayer.bounds.height / 2)
         let radius_outer = (min(outerLayer.bounds.width, outerLayer.bounds.height) / 2)
-        let radius_middle1 = radius_outer - 10
-        let radius_middle2 = radius_outer - 25
+        let radius_middle1 = radius_outer - KnobConstants.radius_middle1_offset
+        let radius_middle2 = radius_outer - KnobConstants.radius_middle2_offset
         let ring_outer = UIBezierPath(arcCenter: center,
                                       radius: radius_outer,
                                       startAngle: 0,
@@ -116,8 +116,8 @@ import UIKit.UIGestureRecognizerSubclass
         
         // Draw pointer.
         let pointer = UIBezierPath()
-        pointer.move(to: CGPoint(x: center.x + radius_middle2-20, y: center.y))
-        pointer.addLine(to: CGPoint(x: center.x + radius_middle2-5, y: center.y))
+        pointer.move(to: CGPoint(x: center.x + radius_middle2 - KnobConstants.pointer_offset1, y: center.y))
+        pointer.addLine(to: CGPoint(x: center.x + radius_middle2 - KnobConstants.pointer_offset2, y: center.y))
         pointerLayer.path = pointer.cgPath
         pointerLayer.lineCap = .round
         
@@ -174,7 +174,7 @@ public class Knob3GestureRecognizer: UIPanGestureRecognizer {
     /// Horizontal and vertical slide calculation reference.
     private var lastTouchPoint: CGPoint = .zero
     /// Horizontal and vertical slide sensitivity multiplier. Defaults 0.005.
-    public var slidingSensitivity: CGFloat = 0.005
+    public var slidingSensitivity: CGFloat = KnobConstants.slidingSensitivity
     
     // MARK: UIGestureRecognizerSubclass
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
