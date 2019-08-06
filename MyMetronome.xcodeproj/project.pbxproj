@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		227378BE22CF0811009DC2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378BD22CF0811009DC2FE /* AppDelegate.swift */; };
-		227378C022CF0811009DC2FE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378BF22CF0811009DC2FE /* FirstViewController.swift */; };
+		227378C022CF0811009DC2FE /* MetronomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378BF22CF0811009DC2FE /* MetronomeViewController.swift */; };
 		227378C222CF0811009DC2FE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378C122CF0811009DC2FE /* SecondViewController.swift */; };
 		227378C522CF0811009DC2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227378C322CF0811009DC2FE /* Main.storyboard */; };
 		227378C722CF0818009DC2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227378C622CF0818009DC2FE /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		227378BA22CF0811009DC2FE /* MyMetronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMetronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227378BD22CF0811009DC2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		227378BF22CF0811009DC2FE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		227378BF22CF0811009DC2FE /* MetronomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewController.swift; sourceTree = "<group>"; };
 		227378C122CF0811009DC2FE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		227378C422CF0811009DC2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		227378C622CF0818009DC2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			children = (
 				227378D122CF09A4009DC2FE /* MyMetronome.swift */,
 				227378BD22CF0811009DC2FE /* AppDelegate.swift */,
-				227378BF22CF0811009DC2FE /* FirstViewController.swift */,
+				227378BF22CF0811009DC2FE /* MetronomeViewController.swift */,
 				22B77CA122F9C8E6004F3C59 /* Constants.swift */,
 				227378C122CF0811009DC2FE /* SecondViewController.swift */,
 				227378C322CF0811009DC2FE /* Main.storyboard */,
@@ -171,7 +171,7 @@
 				22929D7322F87A4600E0B4FB /* MeterView.swift in Sources */,
 				227378BE22CF0811009DC2FE /* AppDelegate.swift in Sources */,
 				22B77CA222F9C8E6004F3C59 /* Constants.swift in Sources */,
-				227378C022CF0811009DC2FE /* FirstViewController.swift in Sources */,
+				227378C022CF0811009DC2FE /* MetronomeViewController.swift in Sources */,
 				22929D7122F22EBF00E0B4FB /* knob.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

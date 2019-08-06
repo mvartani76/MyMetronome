@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  MetronomeViewController.swift
 //  MyMetronome
 //
 //  Created by Michael Vartanian on 7/5/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // Input the data into the array
     var numBeatsData = ["1", "2", "3", "4", "5", "6"]
