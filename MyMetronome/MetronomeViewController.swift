@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import os
 
 class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -65,7 +67,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var isToggled = false
     
     let myMetronome = Metronome()
-    
+    var metronome: Metronome2!
     
     var pickerData: [String] = [String]()
     
@@ -78,6 +80,16 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.numBeatsPickerView.dataSource = self
         self.beatNotePickerView.delegate = self
         self.beatNotePickerView.dataSource = self
+        
+        
+        guard let format = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 2) else {
+            return
+        }
+        metronome = Metronome2(audioFormat: format)
+        metronome.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleMediaServicesWereReset), name: AVAudioSession.mediaServicesWereResetNotification, object: AVAudioSession.sharedInstance())
+
         
         myMeterView.numBeats = .defaultNumBeats
         knob.value = Float(myMetronome.bpm)
@@ -94,9 +106,28 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
         myMeterView.currentBeat = 0
-        
+        updateMeterLabel()
         numBeatsPickerView.selectRow(numBeatsData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
         beatNotePickerView.selectRow(beatNoteData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
+    }
+    
+/* To fix the inconsistent timing, incorporating updates from
+https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewController.swift
+*/
+    @objc func handleMediaServicesWereReset()  {
+        os_log("audio reset")
+        metronome.delegate = nil
+        metronome.reset()
+        
+        updateMeterLabel()
+        
+        metronome.delegate = self
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        }catch {
+            os_log("%@", error.localizedDescription)
+        }
     }
     
     private func animateTick() {
@@ -106,16 +137,19 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func handleKnobChange(_ sender: Any) {
         updateBpm(newBPM: Double(knob.value))
+        metronome.setTempo(to: Int(knob.value))
     }
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
-            myMetronome.enabled = true
+            //myMetronome.enabled = true
+            try? metronome.start()
             isToggled = true
             startStopButton.setTitle("Stop", for: .normal)
             startStopButton.backgroundColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
         } else {
-            myMetronome.enabled = false
+            //myMetronome.enabled = false
+            metronome.stop()
             isToggled = false
             startStopButton.setTitle("Start", for: .normal)
             startStopButton.backgroundColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
@@ -124,10 +158,12 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func incrementBPM(_ sender: UIButton) {
         updateBpm(newBPM: myMetronome.bpm + 1.0)
+        metronome.incrementTempo(by: 1)
     }
     
     @IBAction func decrementBPM(_ sender: UIButton) {
         updateBpm(newBPM: myMetronome.bpm - 1.0)
+        metronome.incrementTempo(by: 1)
     }
     
 
@@ -141,5 +177,23 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         timeSignatureLabel.text = "\(numBeats)/\(beatNote)"
         myMeterView.numBeats = numBeats
         myMeterView.setNeedsDisplay()
+    }
+    
+    func updateMeterLabel() {
+        timeSignatureLabel.text = "\(metronome.meter) / \(metronome.division)"
+    }
+}
+
+/* To fix the inconsistent timing, incorporating updates from
+ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewController.swift
+*/
+extension MetronomeViewController: MetronomeDelegate {
+    func metronomeTicking(_ metronome: Metronome2, currentTick: Int) {
+        DispatchQueue.main.async {
+            //self.updateArcWithTick(currentTick: currentTick)
+            print(currentTick)
+            self.myMeterView.setNeedsDisplay()
+            self.myMeterView.updateMeter()
+        }
     }
 }

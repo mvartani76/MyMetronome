@@ -40,7 +40,7 @@ class Metronome {
     
     private func start() {
         print("Starting metronome, BPM: \(bpm)")
-        nextTick = DispatchTime.now()
+        //  nextTick = DispatchTime.now()
         player.prepareToPlay()
         nextTick = DispatchTime.now()
         tick()
@@ -65,8 +65,8 @@ class Metronome {
         // player.play(atTime) is not playing any sound
         // https://stackoverflow.com/questions/43899431/why-calling-audioplayer-playattime-delay-makes-no-sound-regardless-of-the-val
         // The above link says we need to add player.deviceCurrentTime but then the bpm is much slower
-        //player.play(atTime: interval)
-        player.play()
+        player.play(atTime: interval)
+        //player.play()
         onTick?(nextTick)
     }
 }

@@ -15,6 +15,7 @@
 		227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227378C822CF0818009DC2FE /* LaunchScreen.storyboard */; };
 		227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378D122CF09A4009DC2FE /* MyMetronome.swift */; };
 		227378D422CF14E7009DC2FE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 227378D322CF14E7009DC2FE /* Samples */; };
+		228FF3CC22FA68AE0088BAAA /* Metronome2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FF3CB22FA68AE0088BAAA /* Metronome2.swift */; };
 		22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */; };
 		22929D7122F22EBF00E0B4FB /* knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22929D7022F22EBF00E0B4FB /* knob.swift */; };
 		22929D7322F87A4600E0B4FB /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22929D7222F87A4600E0B4FB /* MeterView.swift */; };
@@ -32,6 +33,7 @@
 		227378CB22CF0818009DC2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227378D122CF09A4009DC2FE /* MyMetronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMetronome.swift; sourceTree = "<group>"; };
 		227378D322CF14E7009DC2FE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Samples; path = Assets.xcassets/Samples; sourceTree = "<group>"; };
+		228FF3CB22FA68AE0088BAAA /* Metronome2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome2.swift; sourceTree = "<group>"; };
 		22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		22929D7022F22EBF00E0B4FB /* knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knob.swift; sourceTree = "<group>"; };
 		22929D7222F87A4600E0B4FB /* MeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				227378D122CF09A4009DC2FE /* MyMetronome.swift */,
+				228FF3CB22FA68AE0088BAAA /* Metronome2.swift */,
 				227378BD22CF0811009DC2FE /* AppDelegate.swift */,
 				227378BF22CF0811009DC2FE /* MetronomeViewController.swift */,
 				22B77CA122F9C8E6004F3C59 /* Constants.swift */,
@@ -169,6 +172,7 @@
 				227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */,
 				227378C222CF0811009DC2FE /* SecondViewController.swift in Sources */,
 				22929D7322F87A4600E0B4FB /* MeterView.swift in Sources */,
+				228FF3CC22FA68AE0088BAAA /* Metronome2.swift in Sources */,
 				227378BE22CF0811009DC2FE /* AppDelegate.swift in Sources */,
 				22B77CA222F9C8E6004F3C59 /* Constants.swift in Sources */,
 				227378C022CF0811009DC2FE /* MetronomeViewController.swift in Sources */,
@@ -322,6 +326,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MWUXP223CK;
 				INFOPLIST_FILE = MyMetronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,6 +347,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MWUXP223CK;
 				INFOPLIST_FILE = MyMetronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
