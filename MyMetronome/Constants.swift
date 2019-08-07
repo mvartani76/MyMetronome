@@ -28,6 +28,10 @@ extension TimeInterval {
     public static let numSecondsInMinute = 60.0
 }
 
+struct MeterConstants {
+    static let meterCircleLineWidth: CGFloat = 5
+}
+
 struct KnobConstants {
     static let minknobvalue: Float = 0.0
     static let maxknobvalue: Float = 1.0
