@@ -13,8 +13,8 @@ import os
 class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // Input the data into the array
-    var numBeatsData = ["1", "2", "3", "4", "5", "6"]
-    var beatNoteData = ["1", "2", "3", "4", "5", "6"]
+    var numBeatsData = ["2", "3", "4", "6", "8", "12"]
+    var beatNoteData = ["4", "8", "16"]
     
     var numBeats: Int = .defaultNumBeats
     var beatNote: Int = .defaultBeatNote
