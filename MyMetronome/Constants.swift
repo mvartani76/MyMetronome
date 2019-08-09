@@ -28,6 +28,11 @@ extension TimeInterval {
     public static let numSecondsInMinute = 60.0
 }
 
+extension UIColor {
+    public static let buttonPrimaryEnabledColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
+    public static let buttonPrimaryDisabledColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+}
+
 struct MeterConstants {
     static let meterCircleLineWidth: CGFloat = 5
 }

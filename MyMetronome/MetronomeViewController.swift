@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 import AVFoundation
 import os
 
@@ -60,11 +61,16 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet var incBPMButton: UIButton!
     @IBOutlet var decBPMButton: UIButton!
     @IBOutlet var timeSignatureLabel: UILabel!
+    @IBOutlet var tapView: TempoTouchPad!
+
+    @IBOutlet var tapButton: UIButton!
+    
     @IBOutlet var numBeatsPickerView: UIPickerView!
     @IBOutlet var beatNotePickerView: UIPickerView!
     
     
     var isToggled = false
+    var tapToggled = false
     
     let myMetronome = Metronome()
     var metronome: Metronome2!
@@ -93,6 +99,16 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         myMeterView.numBeats = .defaultNumBeats
         knob.value = Float(myMetronome.bpm)
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.someAction (_:)))
+        
+        self.tapView.addGestureRecognizer(gesture)
+        
+        startStopButton.backgroundColor = .buttonPrimaryDisabledColor
+        tapButton.backgroundColor = .buttonPrimaryDisabledColor
+        tapButton.titleLabel?.textAlignment = NSTextAlignment.center
+        tapButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        tapButton.titleLabel?.numberOfLines = 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +123,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
         myMeterView.currentBeat = 0
         updateMeterLabel()
+        bpmLabel.layer.zPosition = 1
         numBeatsPickerView.selectRow(numBeatsData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
         beatNotePickerView.selectRow(beatNoteData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
     }
@@ -146,13 +163,13 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             try? metronome.start()
             isToggled = true
             startStopButton.setTitle("Stop", for: .normal)
-            startStopButton.backgroundColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
+            startStopButton.backgroundColor = .buttonPrimaryEnabledColor
         } else {
             //myMetronome.enabled = false
             metronome.stop()
             isToggled = false
             startStopButton.setTitle("Start", for: .normal)
-            startStopButton.backgroundColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+            startStopButton.backgroundColor = .buttonPrimaryDisabledColor
         }
     }
     
@@ -171,6 +188,24 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         myMetronome.bpm = min(max(.defaultMinTempo, newBPM), .defaultMaxTempo)
         bpmLabel.text = String(format: "%.0f", myMetronome.bpm)
         knob.value = Float(myMetronome.bpm)
+    }
+    @IBAction func toggleTapButton(_ sender: UIButton) {
+        if !tapToggled {
+            tapToggled = true
+            tapButton.backgroundColor = .buttonPrimaryEnabledColor
+            tapButton.setTitle("Disable Tempo Tap", for: .normal)
+        } else {
+            tapToggled = false
+            tapButton.backgroundColor = .buttonPrimaryDisabledColor
+            tapButton.setTitle("Enable Tempo Tap", for: .normal)
+        }
+    }
+    
+    @objc func someAction(_ sender:UITapGestureRecognizer){
+        print("view was clicked")
+        if tapToggled {
+            bpmLabel.text = String(format: "%.0f", TempoTouchPad.tapBPM)
+        }
     }
     
     private func updateTimeSignature(numBeats: Int, beatNote: Int) {
