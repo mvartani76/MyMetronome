@@ -116,7 +116,7 @@ public final class Metronome2 {
         } catch {print("error")}
         
         songLengthSamples = audioFile.length
-        print("songlengthSampes = \(songLengthSamples)")
+        print("songlengthSamples = \(songLengthSamples)")
         
         let songFormat = audioFile.processingFormat
         sampleRateSong = Float(songFormat.sampleRate)
@@ -134,13 +134,8 @@ public final class Metronome2 {
         pitch.pitch = 1
         pitch.rate = 1
         
-        
-        
-        
-        
         engine.attach(player)
         engine.connect(player, to:  engine.outputNode, fromBus: 0, toBus: 0, format: audioFormat)
-        
     }
     
     deinit {
@@ -201,31 +196,23 @@ public final class Metronome2 {
          to minimize power consumption.
          */
         engine.stop()
-        
         playerStarted = false
     }
     
     public func incrementTempo(by increment: Int) {
-        
         tempoBPM += increment;
-        
         tempoBPM = min(max(tempoBPM, TempoConfig.min), TempoConfig.max)
-        
         updateTimeInterval()
     }
     
     public func setTempo(to value: Int) {
-        
         tempoBPM = min(max(value, TempoConfig.min), TempoConfig.max)
-        
         updateTimeInterval()
     }
     
     public func incrementMeter(by increment: Int) {
         meter += increment;
-        
         meter = min(max(meter, MeterConfig.min), MeterConfig.max)
-        
         beatNumber = 0
     }
     
@@ -238,12 +225,8 @@ public final class Metronome2 {
         }
         
         divisionIndex += increment
-        
         divisionIndex = min(max(divisionIndex, 0), Constants.kDivisions.count - 1)
-        
         division = Constants.kDivisions[divisionIndex];
-        
-        
         
         if (wasRunning) {
             try start()
@@ -258,8 +241,6 @@ public final class Metronome2 {
         isPlaying = false
         playerStarted = false
     }
-    
-    
     
     func scheduleBeats() {
         if (!isPlaying) { return }
@@ -312,16 +293,11 @@ public final class Metronome2 {
         }
     }
     
-
     func updateTimeInterval() {
-        
         timeInterval = (60.0 / Double(tempoBPM)) * (4.0 / Double(Constants.kDivisions[divisionIndex]))
         
         beatsToScheduleAhead = Int(Constants.kTempoChangeResponsivenessSeconds / timeInterval)
         
         beatsToScheduleAhead = max(beatsToScheduleAhead, 1)
     }
-    
- 
-    
 }
