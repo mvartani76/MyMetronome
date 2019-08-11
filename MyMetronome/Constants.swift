@@ -22,6 +22,10 @@ extension Double {
     public static let defaultMinTempo = 30.0
     public static let defaultMaxTempo = 300.0
     public static let startingTempo = 120.0
+    public static let defaultMinTempo_seconds = numSecondsInMinute / defaultMinTempo
+    public static let defaultMaxTempo_seconds = numSecondsInMinute / defaultMaxTempo
+    
+    public static let tapBPMFiltCoeff = 0.4
 }
 
 extension TimeInterval {

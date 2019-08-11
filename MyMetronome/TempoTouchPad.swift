@@ -11,7 +11,10 @@ import UIKit
 class TempoTouchPad: UIControl {
 
     var prevTap = Date()
-    static var tapBPM = 120.0
+    public static var tapBPM: Double = .startingTempo
+    // Initialize the current/previous difference to 0.5 or tempo = 120bpm
+    var prevDiff = .numSecondsInMinute / .startingTempo
+    var tapDiff = .numSecondsInMinute / .startingTempo
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -21,22 +24,18 @@ class TempoTouchPad: UIControl {
     }
     */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touchCount = touches.count
-        let touch = touches.first
-        let tapCount = touch!.tapCount
         
-        var thisTap = Date()
-        var tapDiff = thisTap.timeIntervalSince(prevTap)
+        let thisTap = Date()
+        tapDiff = thisTap.timeIntervalSince(prevTap)
         prevTap = thisTap
         
-        TempoTouchPad.tapBPM = 60.0/tapDiff
+        // Clip the difference to equate to min bpm of 30 and max bpm of 300
+        tapDiff = max(.defaultMaxTempo_seconds, min(.defaultMinTempo_seconds, tapDiff))
         
-        print("touches began")
-        print("\(touchCount) touches")
-        print("\(tapCount) taps")
-        print("Time is \(thisTap)")
-        print("Time diff is \(tapDiff)")
-        print("bpm is \(60.0/tapDiff)")
+        let curBPM = .numSecondsInMinute/tapDiff
+        
+        // Filter the tap BPM so it is not super sensitive on output
+        TempoTouchPad.tapBPM = (1.0 - .tapBPMFiltCoeff) * TempoTouchPad.tapBPM + .tapBPMFiltCoeff * curBPM
         
     }
 
