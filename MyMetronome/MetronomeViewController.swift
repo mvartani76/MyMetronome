@@ -205,6 +205,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         print("view was clicked")
         if tapToggled {
             bpmLabel.text = String(format: "%.0f", TempoTouchPad.tapBPM)
+            metronome.setTempo(to: Int(TempoTouchPad.tapBPM))
 
             tapView.layer.shadowOffset = .zero
             tapView.layer.shadowColor = .tapViewShadowColor
