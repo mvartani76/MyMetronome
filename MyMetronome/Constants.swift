@@ -35,6 +35,11 @@ extension TimeInterval {
 extension UIColor {
     public static let buttonPrimaryEnabledColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
     public static let buttonPrimaryDisabledColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+    public static let tapViewShadowColor = UIColor.init(red: 147/255, green: 199/255, blue: 253/255, alpha: 1.0)
+}
+
+extension CGColor {
+    public static let tapViewShadowColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [CGFloat(147.0/255.0), CGFloat(199.0/255.0), CGFloat(253.0/255.0), 1.0])
 }
 
 struct MeterConstants {

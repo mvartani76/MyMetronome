@@ -259,7 +259,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYs-FZ-n8F" userLabel="TapView" customClass="TempoTouchPad" customModule="MyMetronome" customModuleProvider="target">
                                                         <rect key="frame" x="12.5" y="9" width="225" height="70.5"/>
-                                                        <color key="backgroundColor" red="0.10980392156862745" green="0.33333333333333331" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.10980392156862745" green="0.33333333333333331" blue="0.68931315891082456" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <integer key="value" value="5"/>
