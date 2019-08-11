@@ -208,11 +208,11 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
 
             tapView.layer.shadowOffset = .zero
             tapView.layer.shadowColor = .tapViewShadowColor
-            tapView.layer.shadowRadius = 20
-            tapView.layer.shadowOpacity = 0.0
+            tapView.layer.shadowRadius = TouchPadConstants.tapViewShadowRadius
+            tapView.layer.shadowOpacity = TouchPadConstants.tapViewShadowOpacity
             tapView.layer.shadowPath = UIBezierPath(rect: tapView.bounds).cgPath
 
-            tapView.animateProperty(layer: tapView.layer, property: "shadowOpacity", fromValue: 1.0, toValue: 0.0, duration: 0.2, timingFunction: CAMediaTimingFunctionName.easeOut, isRemovedonCompletion: false, autoReverses: false)
+            tapView.animateProperty(layer: tapView.layer, property: "shadowOpacity", fromValue: TouchPadConstants.tapViewAnimationFromValue, toValue: TouchPadConstants.tapViewAnimationToValue, duration: TouchPadConstants.tapViewAnimationDuration, timingFunction: CAMediaTimingFunctionName.easeOut, isRemovedonCompletion: false, autoReverses: false)
         }
     }
     

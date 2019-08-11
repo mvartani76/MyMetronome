@@ -24,7 +24,6 @@ extension Double {
     public static let startingTempo = 120.0
     public static let defaultMinTempo_seconds = numSecondsInMinute / defaultMinTempo
     public static let defaultMaxTempo_seconds = numSecondsInMinute / defaultMaxTempo
-    
     public static let tapBPMFiltCoeff = 0.4
 }
 
@@ -56,4 +55,12 @@ struct KnobConstants {
     static let pointer_offset1: CGFloat = 20
     static let pointer_offset2: CGFloat = 5
     static let slidingSensitivity: CGFloat = 0.005
+}
+
+struct TouchPadConstants {
+    static let tapViewShadowRadius: CGFloat = 20
+    static let tapViewShadowOpacity: Float = 0.0
+    static let tapViewAnimationDuration: Double = 0.2
+    static let tapViewAnimationFromValue: Double = 1.0
+    static let tapViewAnimationToValue: Double = 0.0
 }
