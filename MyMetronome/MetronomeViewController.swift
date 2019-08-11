@@ -219,7 +219,9 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     
     private func updateTimeSignature(numBeats: Int, beatNote: Int) {
         timeSignatureLabel.text = "\(numBeats)/\(beatNote)"
+        metronome.meter = numBeats
         myMeterView.numBeats = numBeats
+        //myMeterView.currentBeat = 0
         myMeterView.setNeedsDisplay()
     }
     

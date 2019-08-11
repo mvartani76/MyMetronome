@@ -36,7 +36,7 @@ public final class Metronome2 {
         static let max = 300
     }
     
-    public private(set) var meter = 0
+    public var meter = 0
     public private(set) var division = 0
     public private(set) var tempoBPM = 0
     public private(set) var beatNumber  = 0
@@ -49,15 +49,18 @@ public final class Metronome2 {
     let player: AVAudioPlayerNode = AVAudioPlayerNode()
     
     // Variables/constants needed to incorporate an audio file
-    var audioFile : AVAudioFile = AVAudioFile()
-    var songLengthSamples: AVAudioFramePosition = AVAudioFramePosition()
+    var audioFile_hi : AVAudioFile = AVAudioFile()
+    var audioFile_low : AVAudioFile = AVAudioFile()
+    var songLengthSamples_hi: AVAudioFramePosition = AVAudioFramePosition()
+    var songLengthSamples_low: AVAudioFramePosition = AVAudioFramePosition()
 
     var sampleRateSong: Float = 0
     var lengthSongSeconds: Float = 0
     var startInSongSeconds: Float = 0
 
     let pitch : AVAudioUnitTimePitch = AVAudioUnitTimePitch()
-    var buffer: AVAudioPCMBuffer = AVAudioPCMBuffer()
+    var buffer_hi: AVAudioPCMBuffer = AVAudioPCMBuffer()
+    var buffer_low: AVAudioPCMBuffer = AVAudioPCMBuffer()
     // End of audio file variables/constants
     
     let bufferSampleRate: Double
@@ -108,29 +111,42 @@ public final class Metronome2 {
         
         player.volume = 1.0
 
-        let path = Bundle.main.path(forResource: "/Samples/Woodblock", ofType: "wav")!
-        let url = NSURL.fileURL(withPath: path)
+        let path_hi = Bundle.main.path(forResource: "/Samples/Woodblock", ofType: "wav")!
+        let path_low = Bundle.main.path(forResource: "/Samples/woodblock_low", ofType: "wav")!
+        let url_hi = NSURL.fileURL(withPath: path_hi)
+        let url_low = NSURL.fileURL(withPath: path_low)
         
         do {
-        audioFile = try AVAudioFile(forReading: url)
+            audioFile_hi = try AVAudioFile(forReading: url_hi)
         } catch {print("error")}
         
-        songLengthSamples = audioFile.length
-        print("songlengthSamples = \(songLengthSamples)")
+        do {
+            audioFile_low = try AVAudioFile(forReading: url_low)
+        } catch {print("error")}
         
-        let songFormat = audioFile.processingFormat
+        songLengthSamples_hi = audioFile_hi.length
+        print("songlengthSamples_hi = \(songLengthSamples_hi)")
+        songLengthSamples_low = audioFile_low.length
+        print("songlengthSamples_low = \(songLengthSamples_low)")
+        
+        let songFormat = audioFile_hi.processingFormat
         sampleRateSong = Float(songFormat.sampleRate)
         print("sampleRateSong = \(sampleRateSong)")
-        lengthSongSeconds = Float(songLengthSamples) / sampleRateSong
+        lengthSongSeconds = Float(songLengthSamples_hi) / sampleRateSong
         print("lengthSongSeconds = \(lengthSongSeconds)")
         
-        buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))!
+        buffer_hi = AVAudioPCMBuffer(pcmFormat: audioFile_hi.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_hi.length*/ 8000))!
         do {
-            try audioFile.read(into: buffer)
+            try audioFile_hi.read(into: buffer_hi)
+        } catch _ {print("error with reading into buffer")
+        }
+        
+        buffer_low = AVAudioPCMBuffer(pcmFormat: audioFile_low.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_low.length*/ 8000))!
+        do {
+            try audioFile_low.read(into: buffer_low)
         } catch _ {print("error with reading into buffer")
         }
 
-        //pitch = AVAudioUnitTimePitch()
         pitch.pitch = 1
         pitch.rate = 1
         
@@ -251,13 +267,22 @@ public final class Metronome2 {
             let playerBeatTime = AVAudioTime(sampleTime: nextBeatSampleTime, atRate: bufferSampleRate)
             // This time is relative to the player's start time.
             
-            player.scheduleBuffer(/*soundBuffer[bufferNumber]!*/buffer, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
+            if beatNumber == 0 {
+            player.scheduleBuffer(buffer_hi, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
                 self.syncQueue.async() {
                     self.beatsScheduled -= 1
                     self.bufferNumber ^= 1
                     self.scheduleBeats()
                 }
-            })
+            }) } else {
+                player.scheduleBuffer(buffer_low, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
+                    self.syncQueue.async() {
+                        self.beatsScheduled -= 1
+                        self.bufferNumber ^= 1
+                        self.scheduleBeats()
+                    }
+                })
+            }
             
             beatsScheduled += 1
             
