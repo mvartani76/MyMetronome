@@ -30,13 +30,18 @@ class MeterView: UIView {
         // Calculate the remaining space between the frame and circles for centering the circles within the frame
         let widthDiffOffset = (frame.size.width - ((circleWidth + MeterConstants.meterCircleLineWidth ) * CGFloat(numBeats))) / 2
 
+        var pathColor: UIColor
+        
         for i in 1...numBeats {
             path = UIBezierPath(ovalIn: CGRect(x: CGFloat(i - 1)*(circleWidth+MeterConstants.meterCircleLineWidth)+widthDiffOffset+MeterConstants.meterCircleLineWidth/2, y:circleYPosition, width: circleWidth, height: circleHeight))
-            UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0).setStroke()
+            pathColor = .meterViewStrokeColor
+            pathColor.setStroke()
             if i == currentBeat {
-                UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0).setFill()
+                pathColor = .meterViewAccentFillColor
+                pathColor.setFill()
             } else {
-                UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0).setFill()
+                pathColor = .meterViewNormalFillColor
+                pathColor.setFill()
             }
             path.lineWidth = MeterConstants.meterCircleLineWidth
             path.stroke()

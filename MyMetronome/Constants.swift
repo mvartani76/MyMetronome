@@ -35,6 +35,9 @@ extension UIColor {
     public static let buttonPrimaryEnabledColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
     public static let buttonPrimaryDisabledColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
     public static let tapViewShadowColor = UIColor.init(red: 147/255, green: 199/255, blue: 253/255, alpha: 1.0)
+    public static let meterViewAccentFillColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
+    public static let meterViewNormalFillColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+    public static let meterViewStrokeColor = UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0)
 }
 
 extension CGColor {
