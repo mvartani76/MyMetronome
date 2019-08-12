@@ -39,7 +39,7 @@ public final class Metronome2 {
     public var meter = 0
     public private(set) var division = 0
     public private(set) var tempoBPM = 0
-    public private(set) var beatNumber  = 0
+    public var beatNumber  = 0
     public private(set) var isPlaying = false
     
     public weak var delegate: MetronomeDelegate?
