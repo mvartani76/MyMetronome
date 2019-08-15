@@ -56,6 +56,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet var myMeterView: MeterView!
     
     @IBOutlet var startStopButton: UIButton!
+    @IBOutlet var topLabel: UILabel!
     @IBOutlet var tickLabel: UILabel!
     @IBOutlet var bpmLabel: UILabel!
     @IBOutlet var incBPMButton: UIButton!
@@ -109,10 +110,24 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         tapButton.titleLabel?.textAlignment = NSTextAlignment.center
         tapButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         tapButton.titleLabel?.numberOfLines = 2
+        
+        
+        for family: String in UIFont.familyNames
+        {
+            print(family)
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        topLabel.font = UIFont(name: "Ember", size: 35)
         
         myMetronome.onTick = { (nextTick) in
             self.animateTick()

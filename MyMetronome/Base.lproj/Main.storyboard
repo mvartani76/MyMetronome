@@ -22,7 +22,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UId-0k-51N" userLabel="TopLabelView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="My Metronome" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="My Metronome" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD" userLabel="TopLabel">
                                                 <rect key="frame" x="0.0" y="22.5" width="375" height="43"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -345,6 +345,7 @@
                         <outlet property="tapButton" destination="hXd-A9-kxC" id="RDU-9N-wvw"/>
                         <outlet property="tapView" destination="tYs-FZ-n8F" id="Hqj-vY-6b4"/>
                         <outlet property="timeSignatureLabel" destination="0MO-Pw-8ly" id="p45-2c-VNm"/>
+                        <outlet property="topLabel" destination="KQZ-1w-vlD" id="buV-18-G3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
