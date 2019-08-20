@@ -225,7 +225,7 @@
                                             <constraint firstItem="CFY-a2-HDJ" firstAttribute="width" secondItem="0QZ-yW-DTD" secondAttribute="width" multiplier="0.8" id="fv4-0C-AR2"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1O-cZ-Afs">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1O-cZ-Afs" userLabel="TapStackView">
                                         <rect key="frame" x="0.0" y="441.5" width="375" height="88"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNZ-FP-5Vi" userLabel="TapButtonView">
@@ -360,26 +360,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="86.5" y="312" width="202" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="80" y="363" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hkl-5k-kCj" userLabel="SettingsStackView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpk-tu-huA" userLabel="TopLabelView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5" userLabel="TopLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerY" secondItem="dpk-tu-huA" secondAttribute="centerY" id="BYp-Ur-edb"/>
+                                            <constraint firstItem="zEq-FU-wV5" firstAttribute="height" secondItem="dpk-tu-huA" secondAttribute="height" id="RR4-ef-jLy"/>
+                                            <constraint firstItem="zEq-FU-wV5" firstAttribute="width" secondItem="dpk-tu-huA" secondAttribute="width" id="kbY-yQ-tLN"/>
+                                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="dpk-tu-huA" secondAttribute="centerX" id="s0c-7j-mcv"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-DA-ybw" userLabel="FontStackView">
+                                        <rect key="frame" x="0.0" y="309" width="375" height="309"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWf-33-or0" userLabel="FontLabelView">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhN-lf-Eme" userLabel="FontLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="xhN-lf-Eme" firstAttribute="centerX" secondItem="XWf-33-or0" secondAttribute="centerX" id="HeT-v0-6f5"/>
+                                                    <constraint firstItem="xhN-lf-Eme" firstAttribute="width" secondItem="XWf-33-or0" secondAttribute="width" id="Sjy-cf-mHt"/>
+                                                    <constraint firstItem="xhN-lf-Eme" firstAttribute="height" secondItem="XWf-33-or0" secondAttribute="height" id="cKX-Li-0Kg"/>
+                                                    <constraint firstItem="xhN-lf-Eme" firstAttribute="centerY" secondItem="XWf-33-or0" secondAttribute="centerY" id="g1y-ql-sgN"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUT-X3-rKZ" userLabel="FontPickerViewContainer">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="309"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-5c-sdT" userLabel="FontPickerView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="ltx-5c-sdT" firstAttribute="centerY" secondItem="SUT-X3-rKZ" secondAttribute="centerY" id="5eJ-4r-0qe"/>
+                                                    <constraint firstItem="ltx-5c-sdT" firstAttribute="centerX" secondItem="SUT-X3-rKZ" secondAttribute="centerX" id="pt9-CL-ZFb"/>
+                                                    <constraint firstItem="ltx-5c-sdT" firstAttribute="width" secondItem="SUT-X3-rKZ" secondAttribute="width" id="vTM-7X-U6o"/>
+                                                    <constraint firstItem="ltx-5c-sdT" firstAttribute="height" secondItem="SUT-X3-rKZ" secondAttribute="height" id="xkb-Ks-EX8"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="XWf-33-or0" firstAttribute="height" secondItem="SQt-DA-ybw" secondAttribute="height" id="2fM-q1-2hw"/>
+                                            <constraint firstItem="SUT-X3-rKZ" firstAttribute="height" secondItem="SQt-DA-ybw" secondAttribute="height" id="wFM-h5-vZt"/>
+                                            <constraint firstItem="SUT-X3-rKZ" firstAttribute="width" secondItem="XWf-33-or0" secondAttribute="width" id="wjK-2d-4KX"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SQt-DA-ybw" firstAttribute="width" secondItem="hkl-5k-kCj" secondAttribute="width" id="4GW-6R-YoE"/>
+                                    <constraint firstItem="dpk-tu-huA" firstAttribute="width" secondItem="hkl-5k-kCj" secondAttribute="width" id="nyl-DX-BpG"/>
+                                    <constraint firstItem="SQt-DA-ybw" firstAttribute="height" secondItem="dpk-tu-huA" secondAttribute="height" id="rfS-AF-3WH"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="hkl-5k-kCj" firstAttribute="height" secondItem="O1u-W8-tvY" secondAttribute="height" id="Cbb-HH-mx5"/>
+                            <constraint firstItem="hkl-5k-kCj" firstAttribute="centerY" secondItem="O1u-W8-tvY" secondAttribute="centerY" id="EcZ-J0-RmN"/>
+                            <constraint firstItem="hkl-5k-kCj" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="TUM-sB-xPe"/>
+                            <constraint firstItem="hkl-5k-kCj" firstAttribute="width" secondItem="O1u-W8-tvY" secondAttribute="width" id="VJ5-zH-czV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
