@@ -332,7 +332,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Metronome" image="Metronome" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="beatNotePickerView" destination="xly-dX-uuq" id="9qe-X1-vY8"/>
                         <outlet property="bpmLabel" destination="bRp-bZ-p0l" id="8Nr-bm-MJL"/>
@@ -442,7 +442,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="fontLabel" destination="xhN-lf-Eme" id="uY7-Jv-ytq"/>
                         <outlet property="fontPickerView" destination="ltx-5c-sdT" id="pdh-sI-dxP"/>
@@ -473,7 +473,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Metronome" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
     </resources>
 </document>
