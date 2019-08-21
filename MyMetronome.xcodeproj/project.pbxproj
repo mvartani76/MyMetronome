@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		22378CE32301286F006E5541 /* Ember.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22378CE12301286F006E5541 /* Ember.otf */; };
 		22378CE42301286F006E5541 /* EmberIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22378CE22301286F006E5541 /* EmberIta.otf */; };
+		22378CE6230C4AAF006E5541 /* Grinched.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22378CE5230C4AAF006E5541 /* Grinched.otf */; };
+		22378CE9230CFAB5006E5541 /* Cartoon.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22378CE8230CFAB5006E5541 /* Cartoon.otf */; };
+		22378CEB230D8395006E5541 /* Gooddog.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22378CEA230D8395006E5541 /* Gooddog.ttf */; };
 		227378BE22CF0811009DC2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378BD22CF0811009DC2FE /* AppDelegate.swift */; };
 		227378C022CF0811009DC2FE /* MetronomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378BF22CF0811009DC2FE /* MetronomeViewController.swift */; };
 		227378C222CF0811009DC2FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378C122CF0811009DC2FE /* SettingsViewController.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		22378CE12301286F006E5541 /* Ember.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ember.otf; sourceTree = "<group>"; };
 		22378CE22301286F006E5541 /* EmberIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EmberIta.otf; sourceTree = "<group>"; };
+		22378CE5230C4AAF006E5541 /* Grinched.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Grinched.otf; sourceTree = "<group>"; };
+		22378CE8230CFAB5006E5541 /* Cartoon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cartoon.otf; sourceTree = "<group>"; };
+		22378CEA230D8395006E5541 /* Gooddog.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gooddog.ttf; sourceTree = "<group>"; };
 		227378BA22CF0811009DC2FE /* MyMetronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMetronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227378BD22CF0811009DC2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227378BF22CF0811009DC2FE /* MetronomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 		22378CDC23012761006E5541 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				22378CEA230D8395006E5541 /* Gooddog.ttf */,
+				22378CE8230CFAB5006E5541 /* Cartoon.otf */,
+				22378CE5230C4AAF006E5541 /* Grinched.otf */,
 				22378CE12301286F006E5541 /* Ember.otf */,
 				22378CE22301286F006E5541 /* EmberIta.otf */,
 			);
@@ -172,7 +181,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22378CE9230CFAB5006E5541 /* Cartoon.otf in Resources */,
+				22378CEB230D8395006E5541 /* Gooddog.ttf in Resources */,
 				227378D422CF14E7009DC2FE /* Samples in Resources */,
+				22378CE6230C4AAF006E5541 /* Grinched.otf in Resources */,
 				227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */,
 				227378C722CF0818009DC2FE /* Assets.xcassets in Resources */,
 				227378C522CF0811009DC2FE /* Main.storyboard in Resources */,

@@ -67,3 +67,43 @@ struct TouchPadConstants {
     static let tapViewAnimationFromValue: Double = 1.0
     static let tapViewAnimationToValue: Double = 0.0
 }
+
+struct CustomFontConstants {
+    static let emberFontTitleSize: CGFloat = 37
+    static let emberFontBPMSize: CGFloat = 28
+    static let emberFontincBPMSize: CGFloat = 30
+    static let emberFontdecBPMSize: CGFloat = 30
+    static let emberPickerFontSize: CGFloat = 24
+    static let emberFontTimeSize: CGFloat = 24
+    static let emberFontStartButtonSize: CGFloat = 26
+    static let emberFontEnableTapSize: CGFloat = 16
+    static let emberFontLabelSize: CGFloat = 32
+    static let grinchedFontTitleSize: CGFloat = 42
+    static let grinchedFontBPMSize: CGFloat = 28
+    static let grinchedFontincBPMSize: CGFloat = 30
+    static let grinchedFontdecBPMSize: CGFloat = 30
+    static let grinchedPickerFontSize: CGFloat = 26
+    static let grinchedFontTimeSize: CGFloat = 26
+    static let grinchedFontStartButtonSize: CGFloat = 28
+    static let grinchedFontEnableTapSize: CGFloat = 20
+    static let grinchedFontLabelSize: CGFloat = 38
+    static let partyPlainFontTitleSize: CGFloat = 55
+    static let partyPlainFontBPMSize: CGFloat = 30
+    static let partyPlainFontincBPMSize: CGFloat = 44
+    static let partyPlainFontdecBPMSize: CGFloat = 44
+    static let partyPlainPickerFontSize: CGFloat = 34
+    static let partyPlainFontTimeSize: CGFloat = 34
+    static let partyPlainFontStartButtonSize: CGFloat = 38
+    static let partyPlainFontEnableTapSize: CGFloat = 28
+    static let partyPlainFontLabelSize: CGFloat = 46
+    static let gooddogFontTitleSize: CGFloat = 55
+    static let gooddogFontBPMSize: CGFloat = 45
+    static let gooddogFontincBPMSize: CGFloat = 38
+    static let gooddogFontdecBPMSize: CGFloat = 38
+    static let gooddogPickerFontSize: CGFloat = 40
+    static let gooddogFontTimeSize: CGFloat = 40
+    static let gooddogFontStartButtonSize: CGFloat = 32
+    static let gooddogFontEnableTapSize: CGFloat = 23
+    static let gooddogFontLabelSize: CGFloat = 46
+    static let defaultPickerFontSize: CGFloat = 22
+}

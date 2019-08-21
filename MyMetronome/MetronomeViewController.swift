@@ -13,6 +13,8 @@ import os
 
 class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var mySettingsViewController = SettingsViewController()
+    
     // Input the data into the array
     var numBeatsData = ["2", "3", "4", "6", "8", "12"]
     var beatNoteData = ["4", "8", "16"]
@@ -50,6 +52,29 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             beatNote = Int(beatNoteData[row]) ?? .defaultNumBeats
         }
         updateTimeSignature(numBeats: numBeats, beatNote: beatNote)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        let myFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
+        var pickerFontSize: CGFloat = CustomFontConstants.defaultPickerFontSize
+        
+        switch myFont {
+        case "Ember":
+            pickerFontSize = CustomFontConstants.emberPickerFontSize
+        case "Grinched":
+            pickerFontSize = CustomFontConstants.grinchedPickerFontSize
+        case "PartyLetPlain":
+            pickerFontSize = CustomFontConstants.partyPlainPickerFontSize
+        case "GooddogPlain":
+            pickerFontSize = CustomFontConstants.gooddogPickerFontSize
+        default:
+            pickerFontSize = CustomFontConstants.defaultPickerFontSize
+        }
+        label.font = UIFont(name: myFont, size: pickerFontSize)
+        label.textAlignment = .center
+        label.text = numBeatsData[row]
+        return label
     }
     
     @IBOutlet var knob: Knob3!
@@ -126,8 +151,11 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let myFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
+        print("myFont = \(myFont)")
         
-        topLabel.font = UIFont(name: "Ember", size: 35)
+        // Update the fonts
+        updateMetronomeFonts(customFontType: myFont)
         
         myMetronome.onTick = { (nextTick) in
             self.animateTick()
@@ -141,6 +169,10 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         bpmLabel.layer.zPosition = 1
         numBeatsPickerView.selectRow(numBeatsData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
         beatNotePickerView.selectRow(beatNoteData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
+        
+        // Need to reload all components to update the font if changed in settings view controller
+        numBeatsPickerView.reloadAllComponents()
+        beatNotePickerView.reloadAllComponents()
     }
     
 /* To fix the inconsistent timing, incorporating updates from
@@ -244,6 +276,74 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     
     func updateMeterLabel() {
         timeSignatureLabel.text = "\(metronome.meter) / \(metronome.division)"
+    }
+    
+    func updateMetronomeFonts(customFontType: String) {
+        var customFontTitleSizeVar: CGFloat
+        var customFontBPMSizeVar: CGFloat
+        var customFontincBPMSizeVar: CGFloat
+        var customFontdecBPMSizeVar: CGFloat
+        var customFontTimeSizeVar: CGFloat
+        var customFontStartButtonSizeVar: CGFloat
+        var customFontEnableTapSizeVar: CGFloat
+        
+        // Not all fonts are the same size so need to adjust font size depending on the chosen font
+        switch customFontType {
+        case "Ember":
+            customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
+            customFontBPMSizeVar = CustomFontConstants.emberFontBPMSize
+            customFontincBPMSizeVar = CustomFontConstants.emberFontincBPMSize
+            customFontdecBPMSizeVar = CustomFontConstants.emberFontdecBPMSize
+            customFontTimeSizeVar = CustomFontConstants.emberFontTimeSize
+            customFontStartButtonSizeVar = CustomFontConstants.emberFontStartButtonSize
+            customFontEnableTapSizeVar = CustomFontConstants.emberFontEnableTapSize
+        case "Grinched":
+            customFontTitleSizeVar = CustomFontConstants.grinchedFontTitleSize
+            customFontBPMSizeVar = CustomFontConstants.grinchedFontBPMSize
+            // Using gooddog font size as there is no grinched + character
+            customFontincBPMSizeVar = CustomFontConstants.gooddogFontincBPMSize
+            customFontdecBPMSizeVar = CustomFontConstants.grinchedFontdecBPMSize
+            customFontTimeSizeVar = CustomFontConstants.grinchedFontTimeSize
+            customFontStartButtonSizeVar = CustomFontConstants.grinchedFontStartButtonSize
+            customFontEnableTapSizeVar = CustomFontConstants.grinchedFontEnableTapSize
+        case "PartyLetPlain":
+            customFontTitleSizeVar = CustomFontConstants.partyPlainFontTitleSize
+            customFontBPMSizeVar = CustomFontConstants.partyPlainFontBPMSize
+            customFontincBPMSizeVar = CustomFontConstants.partyPlainFontincBPMSize
+            customFontdecBPMSizeVar = CustomFontConstants.partyPlainFontdecBPMSize
+            customFontTimeSizeVar = CustomFontConstants.partyPlainFontTimeSize
+            customFontStartButtonSizeVar = CustomFontConstants.partyPlainFontStartButtonSize
+            customFontEnableTapSizeVar = CustomFontConstants.partyPlainFontEnableTapSize
+        case "GooddogPlain":
+            customFontTitleSizeVar = CustomFontConstants.gooddogFontTitleSize
+            customFontBPMSizeVar = CustomFontConstants.gooddogFontBPMSize
+            customFontincBPMSizeVar = CustomFontConstants.gooddogFontincBPMSize
+            customFontdecBPMSizeVar = CustomFontConstants.gooddogFontdecBPMSize
+            customFontTimeSizeVar = CustomFontConstants.gooddogFontTimeSize
+            customFontStartButtonSizeVar = CustomFontConstants.gooddogFontStartButtonSize
+            customFontEnableTapSizeVar = CustomFontConstants.gooddogFontEnableTapSize
+            print("wtf \(customFontType)")
+        default:
+            customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
+            customFontBPMSizeVar = CustomFontConstants.emberFontBPMSize
+            customFontincBPMSizeVar = CustomFontConstants.emberFontincBPMSize
+            customFontdecBPMSizeVar = CustomFontConstants.emberFontdecBPMSize
+            customFontTimeSizeVar = CustomFontConstants.emberFontTimeSize
+            customFontStartButtonSizeVar = CustomFontConstants.emberFontStartButtonSize
+            customFontEnableTapSizeVar = CustomFontConstants.emberFontEnableTapSize
+        }
+        topLabel.font = UIFont(name: customFontType, size: customFontTitleSizeVar)
+        bpmLabel.font = UIFont(name: customFontType, size: customFontBPMSizeVar)
+        timeSignatureLabel.font = UIFont(name: customFontType, size: customFontTimeSizeVar)
+        startStopButton.titleLabel?.font = UIFont(name: customFontType, size: customFontStartButtonSizeVar)
+        tapButton.titleLabel?.font = UIFont(name: customFontType, size: customFontEnableTapSizeVar)
+        // Grinched font does not have a + sign so need to use other font
+        if customFontType == "Grinched" {
+            incBPMButton.titleLabel?.font = UIFont(name: "GooddogPlain", size: customFontincBPMSizeVar)
+        } else {
+            incBPMButton.titleLabel?.font = UIFont(name: customFontType, size: customFontincBPMSizeVar)
+        }
+        decBPMButton.titleLabel?.font = UIFont(name: customFontType, size: customFontdecBPMSizeVar)
     }
 }
 

@@ -4,6 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Gooddog.ttf</string>
+		<string>Cartoon.otf</string>
+		<string>Grinched.otf</string>
 		<string>Ember.otf</string>
 		<string>Emberlta.otf</string>
 	</array>
