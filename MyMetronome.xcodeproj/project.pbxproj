@@ -20,12 +20,14 @@
 		227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227378C822CF0818009DC2FE /* LaunchScreen.storyboard */; };
 		227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378D122CF09A4009DC2FE /* MyMetronome.swift */; };
 		227378D422CF14E7009DC2FE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 227378D322CF14E7009DC2FE /* Samples */; };
+		2284F74A23198A0C0002064A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2284F74923198A0C0002064A /* GoogleService-Info.plist */; };
 		228FF3CC22FA68AE0088BAAA /* Metronome2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FF3CB22FA68AE0088BAAA /* Metronome2.swift */; };
 		228FF3CE22FB314F0088BAAA /* TempoTouchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FF3CD22FB314F0088BAAA /* TempoTouchPad.swift */; };
 		22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */; };
 		22929D7122F22EBF00E0B4FB /* knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22929D7022F22EBF00E0B4FB /* knob.swift */; };
 		22929D7322F87A4600E0B4FB /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22929D7222F87A4600E0B4FB /* MeterView.swift */; };
 		22B77CA222F9C8E6004F3C59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B77CA122F9C8E6004F3C59 /* Constants.swift */; };
+		65201875920157ECC1F6C5AA /* Pods_MyMetronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A48EE802F909EDF503BA125 /* Pods_MyMetronome.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +46,16 @@
 		227378CB22CF0818009DC2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227378D122CF09A4009DC2FE /* MyMetronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMetronome.swift; sourceTree = "<group>"; };
 		227378D322CF14E7009DC2FE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Samples; path = Assets.xcassets/Samples; sourceTree = "<group>"; };
+		2284F74923198A0C0002064A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		228FF3CB22FA68AE0088BAAA /* Metronome2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome2.swift; sourceTree = "<group>"; };
 		228FF3CD22FB314F0088BAAA /* TempoTouchPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoTouchPad.swift; sourceTree = "<group>"; };
 		22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		22929D7022F22EBF00E0B4FB /* knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knob.swift; sourceTree = "<group>"; };
 		22929D7222F87A4600E0B4FB /* MeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
 		22B77CA122F9C8E6004F3C59 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3B49BF4CD3523AB669A34B3C /* Pods-MyMetronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMetronome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMetronome/Pods-MyMetronome.debug.xcconfig"; sourceTree = "<group>"; };
+		7A48EE802F909EDF503BA125 /* Pods_MyMetronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMetronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98D8D9E181EF8E2F18DBBE51 /* Pods-MyMetronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMetronome.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMetronome/Pods-MyMetronome.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22929D6F22F1FBE600E0B4FB /* AVFoundation.framework in Frameworks */,
+				65201875920157ECC1F6C5AA /* Pods_MyMetronome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 				227378BC22CF0811009DC2FE /* MyMetronome */,
 				227378BB22CF0811009DC2FE /* Products */,
 				22929D6D22F1FBE600E0B4FB /* Frameworks */,
+				2BD632A6DF261B9384021D8C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +117,7 @@
 				227378C622CF0818009DC2FE /* Assets.xcassets */,
 				227378C822CF0818009DC2FE /* LaunchScreen.storyboard */,
 				227378CB22CF0818009DC2FE /* Info.plist */,
+				2284F74923198A0C0002064A /* GoogleService-Info.plist */,
 				227378D322CF14E7009DC2FE /* Samples */,
 				22378CDC23012761006E5541 /* Fonts */,
 			);
@@ -119,8 +128,18 @@
 			isa = PBXGroup;
 			children = (
 				22929D6E22F1FBE600E0B4FB /* AVFoundation.framework */,
+				7A48EE802F909EDF503BA125 /* Pods_MyMetronome.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BD632A6DF261B9384021D8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B49BF4CD3523AB669A34B3C /* Pods-MyMetronome.debug.xcconfig */,
+				98D8D9E181EF8E2F18DBBE51 /* Pods-MyMetronome.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,9 +149,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 227378CE22CF0818009DC2FE /* Build configuration list for PBXNativeTarget "MyMetronome" */;
 			buildPhases = (
+				C30841BE16C8D2D67E3E3D2E /* [CP] Check Pods Manifest.lock */,
 				227378B622CF0811009DC2FE /* Sources */,
 				227378B722CF0811009DC2FE /* Frameworks */,
 				227378B822CF0811009DC2FE /* Resources */,
+				A6B15DB723F2DDD90AF5E7BD /* [CP] Embed Pods Frameworks */,
+				2284F74B23199B900002064A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -188,12 +210,72 @@
 				227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */,
 				227378C722CF0818009DC2FE /* Assets.xcassets in Resources */,
 				227378C522CF0811009DC2FE /* Main.storyboard in Resources */,
+				2284F74A23198A0C0002064A /* GoogleService-Info.plist in Resources */,
 				22378CE42301286F006E5541 /* EmberIta.otf in Resources */,
 				22378CE32301286F006E5541 /* Ember.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2284F74B23199B900002064A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		A6B15DB723F2DDD90AF5E7BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyMetronome/Pods-MyMetronome-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMetronome/Pods-MyMetronome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C30841BE16C8D2D67E3E3D2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyMetronome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		227378B622CF0811009DC2FE /* Sources */ = {
@@ -352,6 +434,7 @@
 		};
 		227378CF22CF0818009DC2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B49BF4CD3523AB669A34B3C /* Pods-MyMetronome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -373,6 +456,7 @@
 		};
 		227378D022CF0818009DC2FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98D8D9E181EF8E2F18DBBE51 /* Pods-MyMetronome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
