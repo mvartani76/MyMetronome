@@ -364,10 +364,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpk-tu-huA" userLabel="TopLabelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5" userLabel="TopLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -382,14 +382,57 @@
                                             <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="dpk-tu-huA" secondAttribute="centerX" id="s0c-7j-mcv"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tq3-vl-cbb" userLabel="ColorStackView">
+                                        <rect key="frame" x="0.0" y="284" width="375" height="50"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fal-vz-5DH" userLabel="ColorLabelView">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Scheme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGp-16-ebY" userLabel="ColorLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="aGp-16-ebY" firstAttribute="height" secondItem="Fal-vz-5DH" secondAttribute="height" id="BC4-V0-NKA"/>
+                                                    <constraint firstItem="aGp-16-ebY" firstAttribute="centerX" secondItem="Fal-vz-5DH" secondAttribute="centerX" id="mcZ-A1-k80"/>
+                                                    <constraint firstItem="aGp-16-ebY" firstAttribute="width" secondItem="Fal-vz-5DH" secondAttribute="width" id="x4I-WD-hvL"/>
+                                                    <constraint firstItem="aGp-16-ebY" firstAttribute="centerY" secondItem="Fal-vz-5DH" secondAttribute="centerY" id="yqI-o2-Qx5"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyQ-qt-qnO" userLabel="ColorPickerViewContainer">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-eE-f1l" userLabel="ColorPickerView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="EaN-eE-f1l" firstAttribute="centerY" secondItem="DyQ-qt-qnO" secondAttribute="centerY" id="7WN-cp-qON"/>
+                                                    <constraint firstItem="EaN-eE-f1l" firstAttribute="height" secondItem="DyQ-qt-qnO" secondAttribute="height" id="fsd-d0-sB7"/>
+                                                    <constraint firstItem="EaN-eE-f1l" firstAttribute="centerX" secondItem="DyQ-qt-qnO" secondAttribute="centerX" id="pFU-a2-UyU"/>
+                                                    <constraint firstItem="EaN-eE-f1l" firstAttribute="width" secondItem="DyQ-qt-qnO" secondAttribute="width" id="y5L-mV-upv"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="DyQ-qt-qnO" firstAttribute="width" secondItem="Fal-vz-5DH" secondAttribute="width" id="D8B-Af-Dmx"/>
+                                            <constraint firstItem="DyQ-qt-qnO" firstAttribute="height" secondItem="tq3-vl-cbb" secondAttribute="height" id="ODu-QH-smb"/>
+                                            <constraint firstItem="Fal-vz-5DH" firstAttribute="height" secondItem="tq3-vl-cbb" secondAttribute="height" id="x09-jy-ok9"/>
+                                        </constraints>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-DA-ybw" userLabel="FontStackView">
-                                        <rect key="frame" x="0.0" y="309" width="375" height="309"/>
+                                        <rect key="frame" x="0.0" y="334" width="375" height="284"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWf-33-or0" userLabel="FontLabelView">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="284"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhN-lf-Eme" userLabel="FontLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="284"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -404,10 +447,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUT-X3-rKZ" userLabel="FontPickerViewContainer">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="309"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="284"/>
                                                 <subviews>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-5c-sdT" userLabel="FontPickerView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="309"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="284"/>
                                                     </pickerView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -444,6 +487,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="colorLabel" destination="aGp-16-ebY" id="Lig-OG-AZ1"/>
+                        <outlet property="colorPickerView" destination="EaN-eE-f1l" id="vJf-ja-E8D"/>
                         <outlet property="fontLabel" destination="xhN-lf-Eme" id="uY7-Jv-ytq"/>
                         <outlet property="fontPickerView" destination="ltx-5c-sdT" id="pdh-sI-dxP"/>
                         <outlet property="topLabel" destination="zEq-FU-wV5" id="GsR-9f-1cp"/>
