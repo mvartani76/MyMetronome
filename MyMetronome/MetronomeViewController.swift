@@ -19,6 +19,11 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var customPrimaryButtonDisabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
     var customSecondaryButtonColor: UIColor = CustomColorConstants.bluesSecondaryButtonColor
     var customPrimaryStrokeColor: UIColor = CustomColorConstants.bluesMeterViewStrokeColor
+    var customOuterLayerFillColor: UIColor = CustomColorConstants.bluesKnobOuterLayerFillColor
+    var customOuterLayerStrokeColor: UIColor = CustomColorConstants.bluesKnobOuterLayerStrokeColor
+    var customMiddleLayer1FillColor: UIColor = CustomColorConstants.bluesKnobMiddleLayer1FillColor
+    var customMiddleLayer2FillColor: UIColor = CustomColorConstants.bluesKnobMiddleLayer2FillColor
+    var customPointerLayerStrokeColor: UIColor = CustomColorConstants.bluesKnobPointerLayerStrokeColor
 
     // Input the data into the array
     var numBeatsData = ["2", "3", "4", "6", "8", "12"]
@@ -362,16 +367,31 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
             customPrimaryStrokeColor = CustomColorConstants.bluesMeterViewStrokeColor
+            customOuterLayerFillColor = CustomColorConstants.bluesKnobOuterLayerFillColor
+            customOuterLayerStrokeColor = CustomColorConstants.bluesKnobOuterLayerStrokeColor
+            customMiddleLayer1FillColor = CustomColorConstants.bluesKnobMiddleLayer1FillColor
+            customMiddleLayer2FillColor = CustomColorConstants.bluesKnobMiddleLayer2FillColor
+            customPointerLayerStrokeColor = CustomColorConstants.bluesKnobPointerLayerStrokeColor
         case "Pinks":
             customPrimaryButtonEnabledColor = CustomColorConstants.pinksPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.pinksPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.pinksSecondaryButtonColor
             customPrimaryStrokeColor = CustomColorConstants.pinksMeterViewStrokeColor
+            customOuterLayerFillColor = CustomColorConstants.pinksKnobOuterLayerFillColor
+            customOuterLayerStrokeColor = CustomColorConstants.pinksKnobOuterLayerStrokeColor
+            customMiddleLayer1FillColor = CustomColorConstants.pinksKnobMiddleLayer1FillColor
+            customMiddleLayer2FillColor = CustomColorConstants.pinksKnobMiddleLayer2FillColor
+            customPointerLayerStrokeColor = CustomColorConstants.pinksKnobPointerLayerStrokeColor
         default:
             customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
             customPrimaryStrokeColor = CustomColorConstants.bluesMeterViewStrokeColor
+            customOuterLayerFillColor = CustomColorConstants.bluesKnobOuterLayerFillColor
+            customOuterLayerStrokeColor = CustomColorConstants.bluesKnobOuterLayerStrokeColor
+            customMiddleLayer1FillColor = CustomColorConstants.bluesKnobMiddleLayer1FillColor
+            customMiddleLayer2FillColor = CustomColorConstants.bluesKnobMiddleLayer2FillColor
+            customPointerLayerStrokeColor = CustomColorConstants.bluesKnobPointerLayerStrokeColor
         }
         startStopButton.backgroundColor = customPrimaryButtonDisabledColor
         tapButton.backgroundColor = customPrimaryButtonDisabledColor
@@ -381,6 +401,12 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         myMeterView.accentViewColor = customPrimaryButtonEnabledColor
         myMeterView.normalViewColor = customPrimaryButtonDisabledColor
         myMeterView.strokeViewColor = customPrimaryStrokeColor
+        
+        knob.outerLayerFillColor =  customOuterLayerFillColor
+        knob.outerLayerStrokeColor = customOuterLayerStrokeColor
+        knob.middleLayer1FillColor = customMiddleLayer1FillColor
+        knob.middleLayer2FillColor = customMiddleLayer2FillColor
+        knob.pointerLayerStrokeColor = customPointerLayerStrokeColor
     }
 }
 

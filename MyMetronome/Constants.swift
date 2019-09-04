@@ -119,10 +119,20 @@ struct CustomColorConstants {
     static let bluesMeterViewAccentColor: UIColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
     static let bluesMeterViewNormalColor: UIColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
     static let bluesMeterViewStrokeColor: UIColor = UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0)
+    static let bluesKnobOuterLayerFillColor: UIColor = UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0)
+    static let bluesKnobOuterLayerStrokeColor: UIColor = UIColor.blue
+    static let bluesKnobMiddleLayer1FillColor: UIColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+    static let bluesKnobMiddleLayer2FillColor: UIColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
+    static let bluesKnobPointerLayerStrokeColor: UIColor = UIColor.white
     static let pinksPrimaryButtonEnabledColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
     static let pinksPrimaryButtonDisabledColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
     static let pinksSecondaryButtonColor: UIColor = UIColor.init(red: 230/255, green: 117/255, blue: 175/255, alpha: 1.0)
     static let pinksMeterViewAccentColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
     static let pinksMeterViewNormalColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
     static let pinksMeterViewStrokeColor: UIColor = UIColor.init(red: 179/255, green: 32/255, blue: 137/255, alpha: 1.0)
+    static let pinksKnobOuterLayerFillColor: UIColor = UIColor.init(red: 179/255, green: 32/255, blue: 137/255, alpha: 1.0)
+    static let pinksKnobOuterLayerStrokeColor: UIColor = UIColor.systemPink
+    static let pinksKnobMiddleLayer1FillColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
+    static let pinksKnobMiddleLayer2FillColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
+    static let pinksKnobPointerLayerStrokeColor: UIColor = UIColor.white
 }

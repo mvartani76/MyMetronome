@@ -34,6 +34,41 @@ import UIKit.UIGestureRecognizerSubclass
     public private(set) var middleLayer2 = CAShapeLayer()
     public private(set) var pointerLayer = CAShapeLayer()
     
+    public var middleLayer1FillColor: UIColor = CustomColorConstants.bluesKnobMiddleLayer1FillColor {
+        didSet {
+            commonInitColors()
+            setNeedsLayout()
+        }
+    }
+    
+    public var middleLayer2FillColor: UIColor = CustomColorConstants.bluesKnobMiddleLayer2FillColor {
+        didSet {
+            commonInitColors()
+            setNeedsLayout()
+        }
+    }
+    
+    public var outerLayerFillColor: UIColor = CustomColorConstants.bluesKnobOuterLayerFillColor {
+        didSet {
+            commonInitColors()
+            setNeedsLayout()
+        }
+    }
+    
+    public var outerLayerStrokeColor: UIColor = CustomColorConstants.bluesKnobOuterLayerStrokeColor {
+        didSet {
+            commonInitColors()
+            setNeedsLayout()
+        }
+    }
+    
+    public var pointerLayerStrokeColor: UIColor = CustomColorConstants.bluesKnobPointerLayerStrokeColor {
+        didSet {
+            commonInitColors()
+            setNeedsLayout()
+        }
+    }
+    
     /// Start angle of the marker.
     public var startAngle = KnobConstants.startKnobAngle
     /// End angle of the marker.
@@ -46,11 +81,13 @@ import UIKit.UIGestureRecognizerSubclass
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        commonInitColors()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        commonInitColors()
     }
     
     private func commonInit() {
@@ -58,17 +95,21 @@ import UIKit.UIGestureRecognizerSubclass
         gestureRecognizer = Knob3GestureRecognizer(target: self, action: #selector(handleGesture(_:)))
         addGestureRecognizer(gestureRecognizer)
         // Setup layers
-        outerLayer.fillColor = UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0).cgColor
-        outerLayer.strokeColor = UIColor.blue.cgColor
-        middleLayer1.fillColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0).cgColor
-        middleLayer2.fillColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0).cgColor
-        pointerLayer.strokeColor = UIColor.white.cgColor
         pointerLayer.lineWidth = 7
         layer.addSublayer(outerLayer)
         layer.addSublayer(middleLayer1)
         layer.addSublayer(middleLayer2)
         
         layer.addSublayer(pointerLayer)
+    }
+    
+    private func commonInitColors() {
+        // Set up layer colors
+        outerLayer.fillColor = outerLayerFillColor.cgColor
+        outerLayer.strokeColor = outerLayerStrokeColor.cgColor
+        middleLayer1.fillColor = middleLayer1FillColor.cgColor
+        middleLayer2.fillColor = middleLayer2FillColor.cgColor
+        pointerLayer.strokeColor = pointerLayerStrokeColor.cgColor
     }
     
     // MARK: Lifecycle
