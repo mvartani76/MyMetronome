@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var customFont: String = "Ember"
-    var customColor: String = "Blues"
+    var customColorScheme: String = "Blues"
     
     // Font Picker Data
     var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
@@ -48,12 +48,15 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        customFont = fontData[row]
-        UserDefaults.standard.set(customFont, forKey: "font")
-        updateSettingsFonts(customFontType: customFont)
-
-        customColor = colorData[row]
+        if pickerView == fontPickerView {
+            customFont = fontData[row]
+            UserDefaults.standard.set(customFont, forKey: "font")
+            updateSettingsFonts(customFontType: customFont)
+        }
+        else {
+            customColorScheme = colorData[row]
+            UserDefaults.standard.set(customColorScheme, forKey: "colorScheme")
+        }
     }
     
     override func viewDidLoad() {
@@ -66,12 +69,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.colorPickerView.dataSource = self
         
         customFont = "Ember"
+        customColorScheme = "Blues"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         customFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
-        customColor = UserDefaults.standard.string(forKey: "color") ?? "Blues"
+        customColorScheme = UserDefaults.standard.string(forKey: "color") ?? "Blues"
         updateSettingsFonts(customFontType: customFont)
+        updateSettingsColors(customColorType: customColorScheme)
     }
     
     public func updateSettingsFonts(customFontType: String) {
@@ -105,6 +110,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         topLabel.font = UIFont(name: customFont, size: customFontTitleSizeVar)
         fontLabel.font = UIFont(name: customFont, size: customFontLabelSizeVar)
         colorLabel.font = UIFont(name: customFont, size: customColorLabelSizeVar)
+    }
+
+    public func updateSettingsColors(customColorType: String) {
+
     }
 
 

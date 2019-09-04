@@ -12,9 +12,13 @@ import AVFoundation
 import os
 
 class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+
     var mySettingsViewController = SettingsViewController()
-    
+
+    var customPrimaryButtonEnabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
+    var customPrimaryButtonDisabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
+    var customSecondaryButtonColor: UIColor = CustomColorConstants.bluesSecondaryButtonColor
+
     // Input the data into the array
     var numBeatsData = ["2", "3", "4", "6", "8", "12"]
     var beatNoteData = ["4", "8", "16"]
@@ -112,8 +116,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.numBeatsPickerView.dataSource = self
         self.beatNotePickerView.delegate = self
         self.beatNotePickerView.dataSource = self
-        
-        
+
         guard let format = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 2) else {
             return
         }
@@ -153,10 +156,14 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         let myFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
         print("myFont = \(myFont)")
+        let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? "Blues"
         
         // Update the fonts
         updateMetronomeFonts(customFontType: myFont)
-        
+
+        // Update the colors
+        updateMetronomeColors(customColorType: myColorScheme)
+
         myMetronome.onTick = { (nextTick) in
             self.animateTick()
         }
@@ -210,13 +217,13 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             try? metronome.start()
             isToggled = true
             startStopButton.setTitle("Stop", for: .normal)
-            startStopButton.backgroundColor = .buttonPrimaryEnabledColor
+            startStopButton.backgroundColor = customPrimaryButtonEnabledColor
         } else {
             //myMetronome.enabled = false
             metronome.stop()
             isToggled = false
             startStopButton.setTitle("Start", for: .normal)
-            startStopButton.backgroundColor = .buttonPrimaryDisabledColor
+            startStopButton.backgroundColor = customPrimaryButtonDisabledColor
         }
     }
     
@@ -239,11 +246,11 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     @IBAction func toggleTapButton(_ sender: UIButton) {
         if !tapToggled {
             tapToggled = true
-            tapButton.backgroundColor = .buttonPrimaryEnabledColor
+            tapButton.backgroundColor = customPrimaryButtonEnabledColor
             tapButton.setTitle("Disable Tempo Tap", for: .normal)
         } else {
             tapToggled = false
-            tapButton.backgroundColor = .buttonPrimaryDisabledColor
+            tapButton.backgroundColor = customPrimaryButtonDisabledColor
             tapButton.setTitle("Enable Tempo Tap", for: .normal)
         }
     }
@@ -344,6 +351,29 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             incBPMButton.titleLabel?.font = UIFont(name: customFontType, size: customFontincBPMSizeVar)
         }
         decBPMButton.titleLabel?.font = UIFont(name: customFontType, size: customFontdecBPMSizeVar)
+    }
+
+    func updateMetronomeColors(customColorType: String) {
+
+        switch customColorType {
+        case "Blues":
+            customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
+            customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
+            customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
+        case "Pinks":
+            customPrimaryButtonEnabledColor = CustomColorConstants.pinksPrimaryButtonEnabledColor
+            customPrimaryButtonDisabledColor = CustomColorConstants.pinksPrimaryButtonDisabledColor
+            customSecondaryButtonColor = CustomColorConstants.pinksSecondaryButtonColor
+        default:
+            customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
+            customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
+            customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
+        }
+        startStopButton.backgroundColor = customPrimaryButtonDisabledColor
+        tapButton.backgroundColor = customPrimaryButtonDisabledColor
+        decBPMButton.backgroundColor = customPrimaryButtonDisabledColor
+        incBPMButton.backgroundColor = customPrimaryButtonDisabledColor
+        tapView.backgroundColor = customSecondaryButtonColor
     }
 }
 

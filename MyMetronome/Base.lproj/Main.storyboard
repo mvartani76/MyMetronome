@@ -259,7 +259,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYs-FZ-n8F" userLabel="TapView" customClass="TempoTouchPad" customModule="MyMetronome" customModuleProvider="target">
                                                         <rect key="frame" x="12.5" y="9" width="225" height="70.5"/>
-                                                        <color key="backgroundColor" red="0.10980392156862745" green="0.33333333333333331" blue="0.68931315891082456" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.23921568627450979" green="0.53725490196078429" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <integer key="value" value="5"/>
@@ -388,7 +388,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fal-vz-5DH" userLabel="ColorLabelView">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Scheme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGp-16-ebY" userLabel="ColorLabel">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGp-16-ebY" userLabel="ColorLabel">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -488,7 +488,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="colorLabel" destination="aGp-16-ebY" id="Lig-OG-AZ1"/>
-                        <outlet property="colorPickerView" destination="EaN-eE-f1l" id="vJf-ja-E8D"/>
+                        <outlet property="colorPickerView" destination="EaN-eE-f1l" id="mOw-Sw-udb"/>
                         <outlet property="fontLabel" destination="xhN-lf-Eme" id="uY7-Jv-ytq"/>
                         <outlet property="fontPickerView" destination="ltx-5c-sdT" id="pdh-sI-dxP"/>
                         <outlet property="topLabel" destination="zEq-FU-wV5" id="GsR-9f-1cp"/>
