@@ -18,6 +18,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var customPrimaryButtonEnabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
     var customPrimaryButtonDisabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
     var customSecondaryButtonColor: UIColor = CustomColorConstants.bluesSecondaryButtonColor
+    var customPrimaryStrokeColor: UIColor = CustomColorConstants.bluesMeterViewStrokeColor
 
     // Input the data into the array
     var numBeatsData = ["2", "3", "4", "6", "8", "12"]
@@ -360,20 +361,26 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
+            customPrimaryStrokeColor = CustomColorConstants.bluesMeterViewStrokeColor
         case "Pinks":
             customPrimaryButtonEnabledColor = CustomColorConstants.pinksPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.pinksPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.pinksSecondaryButtonColor
+            customPrimaryStrokeColor = CustomColorConstants.pinksMeterViewStrokeColor
         default:
             customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
+            customPrimaryStrokeColor = CustomColorConstants.bluesMeterViewStrokeColor
         }
         startStopButton.backgroundColor = customPrimaryButtonDisabledColor
         tapButton.backgroundColor = customPrimaryButtonDisabledColor
         decBPMButton.backgroundColor = customPrimaryButtonDisabledColor
         incBPMButton.backgroundColor = customPrimaryButtonDisabledColor
         tapView.backgroundColor = customSecondaryButtonColor
+        myMeterView.accentViewColor = customPrimaryButtonEnabledColor
+        myMeterView.normalViewColor = customPrimaryButtonDisabledColor
+        myMeterView.strokeViewColor = customPrimaryStrokeColor
     }
 }
 

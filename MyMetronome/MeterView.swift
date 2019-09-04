@@ -10,6 +10,24 @@ import UIKit
 
 class MeterView: UIView {
 
+    public var accentViewColor: UIColor = .meterViewAccentFillColor {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
+    public var normalViewColor: UIColor = .meterViewNormalFillColor {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
+    public var strokeViewColor: UIColor = .meterViewStrokeColor {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     var numBeats: Int = 4 { didSet {
         numBeats = max(1, numBeats)
         }
@@ -34,13 +52,13 @@ class MeterView: UIView {
         
         for i in 1...numBeats {
             path = UIBezierPath(ovalIn: CGRect(x: CGFloat(i - 1)*(circleWidth+MeterConstants.meterCircleLineWidth)+widthDiffOffset+MeterConstants.meterCircleLineWidth/2, y:circleYPosition, width: circleWidth, height: circleHeight))
-            pathColor = .meterViewStrokeColor
+            pathColor = strokeViewColor
             pathColor.setStroke()
             if i == currentBeat {
-                pathColor = .meterViewAccentFillColor
+                pathColor = accentViewColor
                 pathColor.setFill()
             } else {
-                pathColor = .meterViewNormalFillColor
+                pathColor = normalViewColor
                 pathColor.setFill()
             }
             path.lineWidth = MeterConstants.meterCircleLineWidth

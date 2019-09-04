@@ -116,7 +116,13 @@ struct CustomColorConstants {
     static let bluesPrimaryButtonEnabledColor: UIColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
     static let bluesPrimaryButtonDisabledColor: UIColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
     static let bluesSecondaryButtonColor: UIColor = UIColor.init(red: 62/255, green: 107/255, blue: 180/255, alpha: 1.0)
+    static let bluesMeterViewAccentColor: UIColor = UIColor.init(red: 85/255, green: 139/255, blue: 224/255, alpha: 1.0)
+    static let bluesMeterViewNormalColor: UIColor = UIColor.init(red: 28/255, green: 85/255, blue: 176/255, alpha: 1.0)
+    static let bluesMeterViewStrokeColor: UIColor = UIColor.init(red: 7/255, green: 41/255, blue: 97/255, alpha: 1.0)
     static let pinksPrimaryButtonEnabledColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
     static let pinksPrimaryButtonDisabledColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
     static let pinksSecondaryButtonColor: UIColor = UIColor.init(red: 230/255, green: 117/255, blue: 175/255, alpha: 1.0)
+    static let pinksMeterViewAccentColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
+    static let pinksMeterViewNormalColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
+    static let pinksMeterViewStrokeColor: UIColor = UIColor.init(red: 179/255, green: 32/255, blue: 137/255, alpha: 1.0)
 }
