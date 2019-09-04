@@ -9,13 +9,13 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    var customFont: String = "Ember"
-    var customColorScheme: String = "Blues"
     
     // Font Picker Data
     var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
     var colorData = ["Blues", "Pinks", "Purples", "Greens"]
+ 
+    var customFont: String = ""
+    var customColorScheme: String = ""
     
     @IBOutlet var fontPickerView: UIPickerView!
     @IBOutlet var colorPickerView: UIPickerView!
@@ -68,13 +68,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.colorPickerView.delegate = self
         self.colorPickerView.dataSource = self
         
-        customFont = "Ember"
-        customColorScheme = "Blues"
+        customFont = fontData[0]
+        customColorScheme = colorData[0]
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        customFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
-        customColorScheme = UserDefaults.standard.string(forKey: "color") ?? "Blues"
+        customFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
+        customColorScheme = UserDefaults.standard.string(forKey: "color") ?? colorData[0]
         updateSettingsFonts(customFontType: customFont)
         updateSettingsColors(customColorType: customColorScheme)
     }
@@ -85,19 +85,19 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         var customColorLabelSizeVar: CGFloat
         
         switch customFontType {
-        case "Ember":
+        case fontData[0]:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.emberFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.emberColorLabelSize
-        case "Grinched":
+        case fontData[1]:
             customFontTitleSizeVar = CustomFontConstants.grinchedFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.grinchedFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.grinchedColorLabelSize
-        case "PartyLetPlain":
+        case fontData[2]:
             customFontTitleSizeVar = CustomFontConstants.partyPlainFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.partyPlainFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.partyPlainColorLabelSize
-        case "GooddogPlain":
+        case fontData[3]:
             customFontTitleSizeVar = CustomFontConstants.gooddogFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.gooddogFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.gooddogColorLabelSize
