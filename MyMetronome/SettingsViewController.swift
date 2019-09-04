@@ -74,9 +74,16 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewWillAppear(_ animated: Bool) {
         customFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
-        customColorScheme = UserDefaults.standard.string(forKey: "color") ?? colorData[0]
+        customColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
         updateSettingsFonts(customFontType: customFont)
         updateSettingsColors(customColorType: customColorScheme)
+
+        // Update picker positions to previously selected/stored value
+        let fontIndex = fontData.firstIndex(of: customFont) ?? 0
+        let colorIndex = colorData.firstIndex(of: customColorScheme) ?? 0
+
+        fontPickerView.selectRow(fontIndex, inComponent: 0, animated: true)
+        colorPickerView.selectRow(colorIndex, inComponent: 0, animated: true)
     }
     
     public func updateSettingsFonts(customFontType: String) {
