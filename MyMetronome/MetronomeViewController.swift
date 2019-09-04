@@ -15,6 +15,10 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     var mySettingsViewController = SettingsViewController()
 
+    // Font/Color Picker Data
+    var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
+    var colorData = ["Blues", "Pinks", "Purples", "Greens"]
+    
     var customPrimaryButtonEnabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
     var customPrimaryButtonDisabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
     var customSecondaryButtonColor: UIColor = CustomColorConstants.bluesSecondaryButtonColor
@@ -66,17 +70,17 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = (view as? UILabel) ?? UILabel()
-        let myFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
+        let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         var pickerFontSize: CGFloat = CustomFontConstants.defaultPickerFontSize
         
         switch myFont {
-        case "Ember":
+        case fontData[0]:
             pickerFontSize = CustomFontConstants.emberPickerFontSize
-        case "Grinched":
+        case fontData[1]:
             pickerFontSize = CustomFontConstants.grinchedPickerFontSize
-        case "PartyLetPlain":
+        case fontData[2]:
             pickerFontSize = CustomFontConstants.partyPlainPickerFontSize
-        case "GooddogPlain":
+        case fontData[3]:
             pickerFontSize = CustomFontConstants.gooddogPickerFontSize
         default:
             pickerFontSize = CustomFontConstants.defaultPickerFontSize
@@ -103,7 +107,6 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet var numBeatsPickerView: UIPickerView!
     @IBOutlet var beatNotePickerView: UIPickerView!
-    
     
     var isToggled = false
     var tapToggled = false
@@ -160,9 +163,9 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let myFont = UserDefaults.standard.string(forKey: "font") ?? "Ember"
+        let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         print("myFont = \(myFont)")
-        let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? "Blues"
+        let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
         
         // Update the fonts
         updateMetronomeFonts(customFontType: myFont)
@@ -302,7 +305,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         
         // Not all fonts are the same size so need to adjust font size depending on the chosen font
         switch customFontType {
-        case "Ember":
+        case fontData[0]:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontBPMSizeVar = CustomFontConstants.emberFontBPMSize
             customFontincBPMSizeVar = CustomFontConstants.emberFontincBPMSize
@@ -310,7 +313,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customFontTimeSizeVar = CustomFontConstants.emberFontTimeSize
             customFontStartButtonSizeVar = CustomFontConstants.emberFontStartButtonSize
             customFontEnableTapSizeVar = CustomFontConstants.emberFontEnableTapSize
-        case "Grinched":
+        case fontData[1]:
             customFontTitleSizeVar = CustomFontConstants.grinchedFontTitleSize
             customFontBPMSizeVar = CustomFontConstants.grinchedFontBPMSize
             // Using gooddog font size as there is no grinched + character
@@ -319,7 +322,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customFontTimeSizeVar = CustomFontConstants.grinchedFontTimeSize
             customFontStartButtonSizeVar = CustomFontConstants.grinchedFontStartButtonSize
             customFontEnableTapSizeVar = CustomFontConstants.grinchedFontEnableTapSize
-        case "PartyLetPlain":
+        case fontData[2]:
             customFontTitleSizeVar = CustomFontConstants.partyPlainFontTitleSize
             customFontBPMSizeVar = CustomFontConstants.partyPlainFontBPMSize
             customFontincBPMSizeVar = CustomFontConstants.partyPlainFontincBPMSize
@@ -327,7 +330,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customFontTimeSizeVar = CustomFontConstants.partyPlainFontTimeSize
             customFontStartButtonSizeVar = CustomFontConstants.partyPlainFontStartButtonSize
             customFontEnableTapSizeVar = CustomFontConstants.partyPlainFontEnableTapSize
-        case "GooddogPlain":
+        case fontData[3]:
             customFontTitleSizeVar = CustomFontConstants.gooddogFontTitleSize
             customFontBPMSizeVar = CustomFontConstants.gooddogFontBPMSize
             customFontincBPMSizeVar = CustomFontConstants.gooddogFontincBPMSize
@@ -335,7 +338,6 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customFontTimeSizeVar = CustomFontConstants.gooddogFontTimeSize
             customFontStartButtonSizeVar = CustomFontConstants.gooddogFontStartButtonSize
             customFontEnableTapSizeVar = CustomFontConstants.gooddogFontEnableTapSize
-            print("wtf \(customFontType)")
         default:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontBPMSizeVar = CustomFontConstants.emberFontBPMSize
@@ -351,8 +353,9 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         startStopButton.titleLabel?.font = UIFont(name: customFontType, size: customFontStartButtonSizeVar)
         tapButton.titleLabel?.font = UIFont(name: customFontType, size: customFontEnableTapSizeVar)
         // Grinched font does not have a + sign so need to use other font
-        if customFontType == "Grinched" {
-            incBPMButton.titleLabel?.font = UIFont(name: "GooddogPlain", size: customFontincBPMSizeVar)
+        // Not sure if I like using fontData for this conditional
+        if customFontType == fontData[1] {
+            incBPMButton.titleLabel?.font = UIFont(name: fontData[3], size: customFontincBPMSizeVar)
         } else {
             incBPMButton.titleLabel?.font = UIFont(name: customFontType, size: customFontincBPMSizeVar)
         }
@@ -362,7 +365,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     func updateMetronomeColors(customColorType: String) {
 
         switch customColorType {
-        case "Blues":
+        case colorData[0]:
             customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.bluesSecondaryButtonColor
@@ -372,7 +375,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customMiddleLayer1FillColor = CustomColorConstants.bluesKnobMiddleLayer1FillColor
             customMiddleLayer2FillColor = CustomColorConstants.bluesKnobMiddleLayer2FillColor
             customPointerLayerStrokeColor = CustomColorConstants.bluesKnobPointerLayerStrokeColor
-        case "Pinks":
+        case colorData[1]:
             customPrimaryButtonEnabledColor = CustomColorConstants.pinksPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.pinksPrimaryButtonDisabledColor
             customSecondaryButtonColor = CustomColorConstants.pinksSecondaryButtonColor

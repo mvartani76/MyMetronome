@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // Font Picker Data
+    // Font/Color Picker Data
     var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
     var colorData = ["Blues", "Pinks", "Purples", "Greens"]
  
