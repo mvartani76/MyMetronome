@@ -57,6 +57,38 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             customColorScheme = colorData[row]
             UserDefaults.standard.set(customColorScheme, forKey: "colorScheme")
         }
+        // Need to reload the components to get the font change to take effect
+        fontPickerView.reloadAllComponents()
+        colorPickerView.reloadAllComponents()
+    }
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
+        var pickerFontSize: CGFloat = CustomFontConstants.defaultPickerFontSize
+
+        switch myFont {
+        case fontData[0]:
+            pickerFontSize = CustomFontConstants.emberPickerFontSize
+        case fontData[1]:
+            pickerFontSize = CustomFontConstants.grinchedPickerFontSize
+        case fontData[2]:
+            pickerFontSize = CustomFontConstants.partyPlainPickerFontSize
+        case fontData[3]:
+            pickerFontSize = CustomFontConstants.gooddogPickerFontSize
+        default:
+            pickerFontSize = CustomFontConstants.defaultPickerFontSize
+        }
+        label.font = UIFont(name: myFont, size: pickerFontSize)
+        label.textAlignment = .center
+
+        if pickerView == fontPickerView {
+            label.text = fontData[row]
+        } else {
+            label.text = colorData[row]
+        }
+
+        return label
     }
     
     override func viewDidLoad() {
