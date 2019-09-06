@@ -87,7 +87,13 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         label.font = UIFont(name: myFont, size: pickerFontSize)
         label.textAlignment = .center
-        label.text = numBeatsData[row]
+
+        if pickerView == numBeatsPickerView {
+            label.text = numBeatsData[row]
+        } else {
+            label.text = beatNoteData[row]
+        }
+
         return label
     }
     
