@@ -135,4 +135,15 @@ struct CustomColorConstants {
     static let pinksKnobMiddleLayer1FillColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
     static let pinksKnobMiddleLayer2FillColor: UIColor = UIColor.init(red: 250/255, green: 162/255, blue: 225/255, alpha: 1.0)
     static let pinksKnobPointerLayerStrokeColor: UIColor = UIColor.white
+    static let purplesPrimaryButtonEnabledColor: UIColor = UIColor.init(red: 223/255, green: 126/255, blue: 242/255, alpha: 1.0)
+    static let purplesPrimaryButtonDisabledColor: UIColor = UIColor.init(red: 159/255, green: 35/255, blue: 184/255, alpha: 1.0)
+    static let purplesSecondaryButtonColor: UIColor = UIColor.init(red: 194/255, green: 119/255, blue: 209/255, alpha: 1.0)
+    static let purplesMeterViewAccentColor: UIColor = UIColor.init(red: 223/255, green: 126/255, blue: 242/255, alpha: 1.0)
+    static let purplesMeterViewNormalColor: UIColor = UIColor.init(red: 235/255, green: 52/255, blue: 183/255, alpha: 1.0)
+    static let purplesMeterViewStrokeColor: UIColor = UIColor.init(red: 125/255, green: 22/255, blue: 145/255, alpha: 1.0)
+    static let purplesKnobOuterLayerFillColor: UIColor = UIColor.init(red: 125/255, green: 22/255, blue: 145/255, alpha: 1.0)
+    static let purplesKnobOuterLayerStrokeColor: UIColor = UIColor.purple
+    static let purplesKnobMiddleLayer1FillColor: UIColor = UIColor.init(red: 208/255, green: 16/255, blue: 200/255, alpha: 1.0)
+    static let purplesKnobMiddleLayer2FillColor: UIColor = UIColor.init(red: 223/255, green: 126/255, blue: 242/255, alpha: 1.0)
+    static let purplesKnobPointerLayerStrokeColor: UIColor = UIColor.white
 }
