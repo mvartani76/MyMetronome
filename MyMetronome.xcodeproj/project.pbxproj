@@ -19,7 +19,7 @@
 		227378C722CF0818009DC2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227378C622CF0818009DC2FE /* Assets.xcassets */; };
 		227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227378C822CF0818009DC2FE /* LaunchScreen.storyboard */; };
 		227378D222CF09A4009DC2FE /* MyMetronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227378D122CF09A4009DC2FE /* MyMetronome.swift */; };
-		227378D422CF14E7009DC2FE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 227378D322CF14E7009DC2FE /* Samples */; };
+		22792357233D9C8A00BBFDC1 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 22792356233D9C8A00BBFDC1 /* Samples */; };
 		2284F74A23198A0C0002064A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2284F74923198A0C0002064A /* GoogleService-Info.plist */; };
 		228FF3CC22FA68AE0088BAAA /* Metronome2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FF3CB22FA68AE0088BAAA /* Metronome2.swift */; };
 		228FF3CE22FB314F0088BAAA /* TempoTouchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FF3CD22FB314F0088BAAA /* TempoTouchPad.swift */; };
@@ -45,7 +45,7 @@
 		227378C922CF0818009DC2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		227378CB22CF0818009DC2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227378D122CF09A4009DC2FE /* MyMetronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMetronome.swift; sourceTree = "<group>"; };
-		227378D322CF14E7009DC2FE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Samples; path = Assets.xcassets/Samples; sourceTree = "<group>"; };
+		22792356233D9C8A00BBFDC1 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		2284F74923198A0C0002064A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		228FF3CB22FA68AE0088BAAA /* Metronome2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome2.swift; sourceTree = "<group>"; };
 		228FF3CD22FB314F0088BAAA /* TempoTouchPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoTouchPad.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				227378C822CF0818009DC2FE /* LaunchScreen.storyboard */,
 				227378CB22CF0818009DC2FE /* Info.plist */,
 				2284F74923198A0C0002064A /* GoogleService-Info.plist */,
-				227378D322CF14E7009DC2FE /* Samples */,
+				22792356233D9C8A00BBFDC1 /* Samples */,
 				22378CDC23012761006E5541 /* Fonts */,
 			);
 			path = MyMetronome;
@@ -204,9 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22792357233D9C8A00BBFDC1 /* Samples in Resources */,
 				22378CE9230CFAB5006E5541 /* Cartoon.otf in Resources */,
 				22378CEB230D8395006E5541 /* Gooddog.ttf in Resources */,
-				227378D422CF14E7009DC2FE /* Samples in Resources */,
 				22378CE6230C4AAF006E5541 /* Grinched.otf in Resources */,
 				227378CA22CF0818009DC2FE /* LaunchScreen.storyboard in Resources */,
 				227378C722CF0818009DC2FE /* Assets.xcassets in Resources */,
