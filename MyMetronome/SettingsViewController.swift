@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet var colorLabel: UILabel!
     @IBOutlet var fontLabel: UILabel!
     @IBOutlet var topLabel: UILabel!
+    @IBOutlet var resetMetroLabel: UILabel!
+    @IBOutlet var resetMetroSwitch: UISwitch!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -102,6 +104,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         customFont = fontData[0]
         customColorScheme = colorData[0]
+
+        resetMetroSwitch.addTarget(self, action: #selector(resetMetroChanged), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,37 +126,53 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         var customFontTitleSizeVar: CGFloat
         var customFontLabelSizeVar: CGFloat
         var customColorLabelSizeVar: CGFloat
+        var customResetMetroLabelSizeVar: CGFloat
         
         switch customFontType {
         case fontData[0]:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.emberFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.emberColorLabelSize
+            customResetMetroLabelSizeVar = CustomFontConstants.emberResetMetroLabelSize
         case fontData[1]:
             customFontTitleSizeVar = CustomFontConstants.grinchedFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.grinchedFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.grinchedColorLabelSize
+            customResetMetroLabelSizeVar = CustomFontConstants.grinchedResetMetroLabelSize
         case fontData[2]:
             customFontTitleSizeVar = CustomFontConstants.partyPlainFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.partyPlainFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.partyPlainColorLabelSize
+            customResetMetroLabelSizeVar = CustomFontConstants.partyPlainResetMetroLabelSize
         case fontData[3]:
             customFontTitleSizeVar = CustomFontConstants.gooddogFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.gooddogFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.gooddogColorLabelSize
+            customResetMetroLabelSizeVar = CustomFontConstants.gooddogResetMetroLabelSize
         default:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.emberFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.emberColorLabelSize
+            customResetMetroLabelSizeVar = CustomFontConstants.emberResetMetroLabelSize
         }
 
         topLabel.font = UIFont(name: customFont, size: customFontTitleSizeVar)
         fontLabel.font = UIFont(name: customFont, size: customFontLabelSizeVar)
         colorLabel.font = UIFont(name: customFont, size: customColorLabelSizeVar)
+        resetMetroLabel.font = UIFont(name: customFont, size: customResetMetroLabelSizeVar)
     }
 
     public func updateSettingsColors(customColorType: String) {
 
+    }
+
+    @objc func resetMetroChanged(switchState: UISwitch) {
+        if switchState.isOn {
+            UserDefaults.standard.set(true, forKey: "resetMetroState")
+        }
+        else {
+            UserDefaults.standard.set(false, forKey: "resetMetroState")
+        }
     }
 
 

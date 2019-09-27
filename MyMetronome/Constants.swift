@@ -79,6 +79,7 @@ struct CustomFontConstants {
     static let emberFontEnableTapSize: CGFloat = 16
     static let emberFontLabelSize: CGFloat = 32
     static let emberColorLabelSize: CGFloat = 30
+    static let emberResetMetroLabelSize: CGFloat = 24
     static let grinchedFontTitleSize: CGFloat = 42
     static let grinchedFontBPMSize: CGFloat = 28
     static let grinchedFontincBPMSize: CGFloat = 30
@@ -89,6 +90,7 @@ struct CustomFontConstants {
     static let grinchedFontEnableTapSize: CGFloat = 20
     static let grinchedFontLabelSize: CGFloat = 38
     static let grinchedColorLabelSize: CGFloat = 38
+    static let grinchedResetMetroLabelSize: CGFloat = 28
     static let partyPlainFontTitleSize: CGFloat = 55
     static let partyPlainFontBPMSize: CGFloat = 30
     static let partyPlainFontincBPMSize: CGFloat = 44
@@ -99,6 +101,7 @@ struct CustomFontConstants {
     static let partyPlainFontEnableTapSize: CGFloat = 28
     static let partyPlainFontLabelSize: CGFloat = 46
     static let partyPlainColorLabelSize: CGFloat = 46
+    static let partyPlainResetMetroLabelSize: CGFloat = 36
     static let gooddogFontTitleSize: CGFloat = 55
     static let gooddogFontBPMSize: CGFloat = 45
     static let gooddogFontincBPMSize: CGFloat = 38
@@ -109,6 +112,7 @@ struct CustomFontConstants {
     static let gooddogFontEnableTapSize: CGFloat = 23
     static let gooddogFontLabelSize: CGFloat = 46
     static let gooddogColorLabelSize: CGFloat = 45
+    static let gooddogResetMetroLabelSize: CGFloat = 30
     static let defaultPickerFontSize: CGFloat = 22
 }
 

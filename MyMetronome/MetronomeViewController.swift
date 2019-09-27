@@ -116,6 +116,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var isToggled = false
     var tapToggled = false
+    var resetMetroSwitchState = true
     
     let myMetronome = Metronome()
     var metronome: Metronome2!
@@ -170,8 +171,10 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewWillAppear(animated)
         
         let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
-        print("myFont = \(myFont)")
         let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
+        resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState")
+
+        print("reset state = \(resetMetroSwitchState)")
         
         // Update the fonts
         updateMetronomeFonts(customFontType: myFont)
@@ -229,7 +232,11 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
             //myMetronome.enabled = true
-            try? metronome.start()
+            try? metronome.start(withReset: resetMetroSwitchState)
+            if resetMetroSwitchState == true {
+                myMeterView.currentBeat = 0
+                myMeterView.setNeedsDisplay()
+            }
             isToggled = true
             startStopButton.setTitle("Stop", for: .normal)
             startStopButton.backgroundColor = customPrimaryButtonEnabledColor
@@ -271,7 +278,6 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     }
     
     @objc func someAction(_ sender:UITapGestureRecognizer){
-        print("view was clicked")
         if tapToggled {
             bpmLabel.text = String(format: "%.0f", TempoTouchPad.tapBPM)
             metronome.setTempo(to: Int(TempoTouchPad.tapBPM))

@@ -161,7 +161,7 @@ public final class Metronome2 {
         soundBuffer[1] = nil
     }
     
-    public func start() throws {
+    public func start(withReset: Bool) throws {
         
         // Start the engine without playing anything yet.
         try engine.start()
@@ -169,7 +169,12 @@ public final class Metronome2 {
         
         updateTimeInterval()
         nextBeatSampleTime = 0
-        beatNumber = 0
+
+        // Set beatNumber = 0 if reset on toggle selected
+        if withReset == true {
+            beatNumber = 0
+        }
+
         bufferNumber = 0
         
         self.syncQueue.async() {
@@ -244,8 +249,9 @@ public final class Metronome2 {
         divisionIndex = min(max(divisionIndex, 0), Constants.kDivisions.count - 1)
         division = Constants.kDivisions[divisionIndex];
         
+        // Need to reset the meter if incrementing the division index
         if (wasRunning) {
-            try start()
+            try start(withReset: true)
         }
     }
     
