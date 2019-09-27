@@ -154,17 +154,6 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         tapButton.titleLabel?.textAlignment = NSTextAlignment.center
         tapButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         tapButton.titleLabel?.numberOfLines = 2
-        
-        
-        for family: String in UIFont.familyNames
-        {
-            print(family)
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
-            }
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -231,7 +220,6 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
-            //myMetronome.enabled = true
             try? metronome.start(withReset: resetMetroSwitchState)
             if resetMetroSwitchState == true {
                 myMeterView.currentBeat = 0
@@ -241,7 +229,6 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             startStopButton.setTitle("Stop", for: .normal)
             startStopButton.backgroundColor = customPrimaryButtonEnabledColor
         } else {
-            //myMetronome.enabled = false
             metronome.stop()
             isToggled = false
             startStopButton.setTitle("Start", for: .normal)
