@@ -111,6 +111,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewWillAppear(_ animated: Bool) {
         customFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         customColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
+        let resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState") 
+        resetMetroSwitch.setOn(resetMetroSwitchState, animated: false)
         updateSettingsFonts(customFontType: customFont)
         updateSettingsColors(customColorType: customColorScheme)
 
