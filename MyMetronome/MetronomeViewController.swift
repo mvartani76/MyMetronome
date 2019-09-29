@@ -35,11 +35,14 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var numBeats: Int = .defaultNumBeats
     var beatNote: Int = .defaultBeatNote
-    
+
+    // justStarted value added to fix bug where meter display was updating twice for one audio click
+    var justStarted: Bool = true
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView == numBeatsPickerView {
@@ -154,6 +157,10 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         tapButton.titleLabel?.textAlignment = NSTextAlignment.center
         tapButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         tapButton.titleLabel?.numberOfLines = 2
+        
+        updateBpm(newBPM: Double(knob.value))
+        updateTimeSignature(numBeats: .defaultNumBeats, beatNote: .defaultBeatNote)
+        myMeterView.currentBeat = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -174,11 +181,10 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         myMetronome.onTick = { (nextTick) in
             self.animateTick()
         }
-        updateBpm(newBPM: Double(knob.value))
-        updateTimeSignature(numBeats: .defaultNumBeats, beatNote: .defaultBeatNote)
         
-        // Initialize the currentBeat to 0 to have the first tick highlight the leftmost circle
-        myMeterView.currentBeat = 0
+        // Load the currentBeat from UserDefaults
+        myMeterView.currentBeat = UserDefaults.standard.integer(forKey: "currentBeat")
+
         updateMeterLabel()
         bpmLabel.layer.zPosition = 1
         numBeatsPickerView.selectRow(numBeatsData.firstIndex(of: .defaultNumBeats)!, inComponent: 0, animated: true)
@@ -189,6 +195,11 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         beatNotePickerView.reloadAllComponents()
     }
     
+    // Save the currentBeat according to the MeterView in UserDefaults before navigating away from current ViewController
+    override func viewWillDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(myMeterView.currentBeat, forKey: "currentBeat")
+    }
+
 /* To fix the inconsistent timing, incorporating updates from
 https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewController.swift
 */
@@ -220,17 +231,19 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
-            try? metronome.start(withReset: resetMetroSwitchState)
+            try? metronome.start(withReset: resetMetroSwitchState, inputBeatNumber: myMeterView.currentBeat)
             if resetMetroSwitchState == true {
                 myMeterView.currentBeat = 0
                 myMeterView.setNeedsDisplay()
             }
+            justStarted = true
             isToggled = true
             startStopButton.setTitle("Stop", for: .normal)
             startStopButton.backgroundColor = customPrimaryButtonEnabledColor
         } else {
             metronome.stop()
             isToggled = false
+            justStarted = false
             startStopButton.setTitle("Start", for: .normal)
             startStopButton.backgroundColor = customPrimaryButtonDisabledColor
         }
@@ -429,9 +442,14 @@ extension MetronomeViewController: MetronomeDelegate {
     func metronomeTicking(_ metronome: Metronome2, currentTick: Int) {
         DispatchQueue.main.async {
             //self.updateArcWithTick(currentTick: currentTick)
-            print(currentTick)
-            self.myMeterView.setNeedsDisplay()
-            self.myMeterView.updateMeter()
+            print("current tick = \(currentTick)")
+            if self.justStarted == false {
+                self.myMeterView.setNeedsDisplay()
+                self.myMeterView.updateMeter()
+            }
+            else {
+                self.justStarted = false
+            }
         }
     }
 }

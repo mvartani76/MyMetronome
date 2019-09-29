@@ -161,7 +161,10 @@ public final class Metronome2 {
         soundBuffer[1] = nil
     }
     
-    public func start(withReset: Bool) throws {
+    // The start function has two input parameters used for synchronizing with display.
+    // withReset: Boolean that is used to always put beatNumber = 0
+    // inputBeatNumber: Integer that keeps track of the current beat. This will make sure that stopping the metronome at the nonzero beat and then restarting will always have the accent on beat 0
+    public func start(withReset: Bool, inputBeatNumber: Int) throws {
         
         // Start the engine without playing anything yet.
         try engine.start()
@@ -173,6 +176,8 @@ public final class Metronome2 {
         // Set beatNumber = 0 if reset on toggle selected
         if withReset == true {
             beatNumber = 0
+        } else {
+            beatNumber = inputBeatNumber
         }
 
         bufferNumber = 0
@@ -250,8 +255,9 @@ public final class Metronome2 {
         division = Constants.kDivisions[divisionIndex];
         
         // Need to reset the meter if incrementing the division index
+        // Input to inputBeatNumber not relevant as withReset = true
         if (wasRunning) {
-            try start(withReset: true)
+            try start(withReset: true, inputBeatNumber: 0)
         }
     }
     
@@ -272,7 +278,6 @@ public final class Metronome2 {
             
             let playerBeatTime = AVAudioTime(sampleTime: nextBeatSampleTime, atRate: bufferSampleRate)
             // This time is relative to the player's start time.
-            
             if beatNumber == 0 {
             player.scheduleBuffer(buffer_hi, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
                 self.syncQueue.async() {
@@ -301,14 +306,11 @@ public final class Metronome2 {
             }
             
             // Schedule the delegate callback (metronomeTicking:bar:beat:) if necessary.
-            
             let callBackMeter = meter
             if let delegate = self.delegate , self.isPlaying && self.meter == callBackMeter {
                 let callbackBeat = beatNumber
-                
                 let nodeBeatTime: AVAudioTime = player.nodeTime(forPlayerTime: playerBeatTime)!
                 let output: AVAudioIONode = engine.outputNode
-                
                 os_log(" %@, %@, %f", playerBeatTime, nodeBeatTime, output.presentationLatency)
                 
                 let latencyHostTicks: UInt64 = AVAudioTime.hostTime(forSeconds: output.presentationLatency)
