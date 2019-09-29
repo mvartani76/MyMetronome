@@ -165,7 +165,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
         resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState")
@@ -441,15 +441,19 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
 extension MetronomeViewController: MetronomeDelegate {
     func metronomeTicking(_ metronome: Metronome2, currentTick: Int) {
         DispatchQueue.main.async {
-            //self.updateArcWithTick(currentTick: currentTick)
-            print("current tick = \(currentTick)")
-            if self.justStarted == false {
+            // As there are differences between simulator and device, adding code to check which environment being built for
+            #if targetEnvironment(simulator)
                 self.myMeterView.setNeedsDisplay()
                 self.myMeterView.updateMeter()
-            }
-            else {
-                self.justStarted = false
-            }
+            #else
+                if self.justStarted == false {
+                    self.myMeterView.setNeedsDisplay()
+                    self.myMeterView.updateMeter()
+                }
+                else {
+                    self.justStarted = false
+                }
+            #endif
         }
     }
 }
