@@ -59,8 +59,10 @@ public final class Metronome2 {
     var startInSongSeconds: Float = 0
 
     let pitch : AVAudioUnitTimePitch = AVAudioUnitTimePitch()
-    var buffer_hi: AVAudioPCMBuffer = AVAudioPCMBuffer()
-    var buffer_low: AVAudioPCMBuffer = AVAudioPCMBuffer()
+    // Declare fixed length array of AVAudioPCMBuffers
+    // Not sure how to index if dynamic so set to a fixed length
+    var buffer_hi = [AVAudioPCMBuffer?](repeatElement(nil, count: 8))
+    var buffer_low = [AVAudioPCMBuffer?](repeatElement(nil, count: 8))
     // End of audio file variables/constants
     
     let bufferSampleRate: Double
@@ -82,7 +84,7 @@ public final class Metronome2 {
     var playerStarted = false
 
     
-    public init(audioFormat:AVAudioFormat) {
+    public init(audioFormat:AVAudioFormat, clickData: [String]) {
         
         self.audioFormat = audioFormat
         self.bufferSampleRate = audioFormat.sampleRate
@@ -108,43 +110,46 @@ public final class Metronome2 {
         //wg1.render(soundBuffer[0]!)
         //wg2.render(soundBuffer[1]!)
         
-        
         player.volume = 1.0
+        
+        // Array of urls come in pairs so only need to loop through half the array
+        // First element in pair is accent while the second is non-accent
+        for i in 0..<clickData.count/2 {
+            let path_hi = Bundle.main.path(forResource: clickData[2*i], ofType: "wav")!
+            let path_low = Bundle.main.path(forResource: clickData[2*i+1], ofType: "wav")!
+            let url_hi = NSURL.fileURL(withPath: path_hi)
+            let url_low = NSURL.fileURL(withPath: path_low)
 
-        let path_hi = Bundle.main.path(forResource: "/Samples/Woodblock", ofType: "wav")!
-        let path_low = Bundle.main.path(forResource: "/Samples/woodblock_low", ofType: "wav")!
-        let url_hi = NSURL.fileURL(withPath: path_hi)
-        let url_low = NSURL.fileURL(withPath: path_low)
-        
-        do {
-            audioFile_hi = try AVAudioFile(forReading: url_hi)
-        } catch {print("error")}
-        
-        do {
-            audioFile_low = try AVAudioFile(forReading: url_low)
-        } catch {print("error")}
-        
-        songLengthSamples_hi = audioFile_hi.length
-        print("songlengthSamples_hi = \(songLengthSamples_hi)")
-        songLengthSamples_low = audioFile_low.length
-        print("songlengthSamples_low = \(songLengthSamples_low)")
-        
-        let songFormat = audioFile_hi.processingFormat
-        sampleRateSong = Float(songFormat.sampleRate)
-        print("sampleRateSong = \(sampleRateSong)")
-        lengthSongSeconds = Float(songLengthSamples_hi) / sampleRateSong
-        print("lengthSongSeconds = \(lengthSongSeconds)")
-        
-        buffer_hi = AVAudioPCMBuffer(pcmFormat: audioFile_hi.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_hi.length*/ 8000))!
-        do {
-            try audioFile_hi.read(into: buffer_hi)
-        } catch _ {print("error with reading into buffer")
-        }
-        
-        buffer_low = AVAudioPCMBuffer(pcmFormat: audioFile_low.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_low.length*/ 8000))!
-        do {
-            try audioFile_low.read(into: buffer_low)
-        } catch _ {print("error with reading into buffer")
+            do {
+                audioFile_hi = try AVAudioFile(forReading: url_hi)
+            } catch {print("error")}
+
+            do {
+                audioFile_low = try AVAudioFile(forReading: url_low)
+            } catch {print("error")}
+
+            songLengthSamples_hi = audioFile_hi.length
+            print("songlengthSamples_hi = \(songLengthSamples_hi)")
+            songLengthSamples_low = audioFile_low.length
+            print("songlengthSamples_low = \(songLengthSamples_low)")
+
+            let songFormat = audioFile_hi.processingFormat
+            sampleRateSong = Float(songFormat.sampleRate)
+            print("sampleRateSong = \(sampleRateSong)")
+            lengthSongSeconds = Float(songLengthSamples_hi) / sampleRateSong
+            print("lengthSongSeconds = \(lengthSongSeconds)")
+
+            buffer_hi[2*i] = AVAudioPCMBuffer(pcmFormat: audioFile_hi.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_hi.length*/ 8000))!
+            do {
+                try audioFile_hi.read(into: buffer_hi[2*i]!)
+            } catch _ {print("error with reading into buffer")
+            }
+
+            buffer_low[2*i+1] = AVAudioPCMBuffer(pcmFormat: audioFile_low.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_low.length*/ 8000))!
+            do {
+                try audioFile_low.read(into: buffer_low[2*i+1]!)
+            } catch _ {print("error with reading into buffer")
+            }
         }
 
         pitch.pitch = 1
@@ -164,7 +169,7 @@ public final class Metronome2 {
     // The start function has two input parameters used for synchronizing with display.
     // withReset: Boolean that is used to always put beatNumber = 0
     // inputBeatNumber: Integer that keeps track of the current beat. This will make sure that stopping the metronome at the nonzero beat and then restarting will always have the accent on beat 0
-    public func start(withReset: Bool, inputBeatNumber: Int) throws {
+    public func start(withReset: Bool, inputBeatNumber: Int, selectedSoundIndex: Int) throws {
         
         // Start the engine without playing anything yet.
         try engine.start()
@@ -183,7 +188,7 @@ public final class Metronome2 {
         bufferNumber = 0
         
         self.syncQueue.async() {
-            self.scheduleBeats()
+            self.scheduleBeats(soundIndex: selectedSoundIndex)
         }
     }
     
@@ -257,7 +262,7 @@ public final class Metronome2 {
         // Need to reset the meter if incrementing the division index
         // Input to inputBeatNumber not relevant as withReset = true
         if (wasRunning) {
-            try start(withReset: true, inputBeatNumber: 0)
+            try start(withReset: true, inputBeatNumber: 0, selectedSoundIndex: 0)
         }
     }
     
@@ -270,7 +275,7 @@ public final class Metronome2 {
         playerStarted = false
     }
     
-    func scheduleBeats() {
+    func scheduleBeats(soundIndex: Int) {
         if (!isPlaying) { return }
         
         while (beatsScheduled < beatsToScheduleAhead) {
@@ -279,18 +284,18 @@ public final class Metronome2 {
             let playerBeatTime = AVAudioTime(sampleTime: nextBeatSampleTime, atRate: bufferSampleRate)
             // This time is relative to the player's start time.
             if beatNumber == 0 {
-            player.scheduleBuffer(buffer_hi, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
+                player.scheduleBuffer(buffer_hi[2*soundIndex]!, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
                 self.syncQueue.async() {
                     self.beatsScheduled -= 1
                     self.bufferNumber ^= 1
-                    self.scheduleBeats()
+                    self.scheduleBeats(soundIndex: soundIndex)
                 }
             }) } else {
-                player.scheduleBuffer(buffer_low, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
+                player.scheduleBuffer(buffer_low[2*soundIndex+1]!, at: playerBeatTime, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: {
                     self.syncQueue.async() {
                         self.beatsScheduled -= 1
                         self.bufferNumber ^= 1
-                        self.scheduleBeats()
+                        self.scheduleBeats(soundIndex: soundIndex)
                     }
                 })
             }

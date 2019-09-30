@@ -71,6 +71,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         else {
             customSounds = soundsData[row]
+            UserDefaults.standard.set(customSounds, forKey: "clickSounds")
         }
         // Need to reload the components to get the font change to take effect
         fontPickerView.reloadAllComponents()
@@ -129,7 +130,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewWillAppear(_ animated: Bool) {
         customFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         customColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
-        let resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState") 
+        customSounds = UserDefaults.standard.string(forKey: "clickSounds") ?? soundsData[0]
+        let resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState")
         resetMetroSwitch.setOn(resetMetroSwitchState, animated: false)
         updateSettingsFonts(customFontType: customFont)
         updateSettingsColors(customColorType: customColorScheme)

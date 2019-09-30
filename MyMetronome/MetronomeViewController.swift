@@ -15,10 +15,15 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     var mySettingsViewController = SettingsViewController()
 
-    // Font/Color Picker Data
+    // Font/Color/Sounds Picker Data
     var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
     var colorData = ["Blues", "Pinks", "Purples", "Greens"]
-    
+    var soundsData = ["Woodblocks", "Blips"]
+
+    // Array of sound URLs to use with metronome
+    // URLs need to be grouped as accent/non-accent
+    var soundsURLData = ["/Samples/Woodblock", "/Samples/woodblock_low", "/Samples/blip1-hi", "/Samples/blip1-low"]
+
     var customPrimaryButtonEnabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
     var customPrimaryButtonDisabledColor: UIColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
     var customSecondaryButtonColor: UIColor = CustomColorConstants.bluesSecondaryButtonColor
@@ -120,6 +125,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var isToggled = false
     var tapToggled = false
     var resetMetroSwitchState = true
+    var selectedSoundIndex = 0
     
     let myMetronome = Metronome()
     var metronome: Metronome2!
@@ -139,7 +145,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         guard let format = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 2) else {
             return
         }
-        metronome = Metronome2(audioFormat: format)
+        metronome = Metronome2(audioFormat: format, clickData: soundsURLData)
         metronome.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleMediaServicesWereReset), name: AVAudioSession.mediaServicesWereResetNotification, object: AVAudioSession.sharedInstance())
@@ -168,6 +174,7 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
         let myFont = UserDefaults.standard.string(forKey: "font") ?? fontData[0]
         let myColorScheme = UserDefaults.standard.string(forKey: "colorScheme") ?? colorData[0]
+        let mySound = UserDefaults.standard.string(forKey: "clickSounds") ?? soundsData[0]
         resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState")
 
         print("reset state = \(resetMetroSwitchState)")
@@ -184,6 +191,9 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         // Load the currentBeat from UserDefaults
         myMeterView.currentBeat = UserDefaults.standard.integer(forKey: "currentBeat")
+
+        // Set the index of the selected sound from the soundsData array
+        selectedSoundIndex = soundsData.firstIndex(of: mySound) ?? 0
 
         updateMeterLabel()
         bpmLabel.layer.zPosition = 1
@@ -231,7 +241,7 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
     
     @IBAction func toggleMetronomeButton(_ sender: UIButton) {
         if !isToggled {
-            try? metronome.start(withReset: resetMetroSwitchState, inputBeatNumber: myMeterView.currentBeat)
+            try? metronome.start(withReset: resetMetroSwitchState, inputBeatNumber: myMeterView.currentBeat, selectedSoundIndex: selectedSoundIndex)
             if resetMetroSwitchState == true {
                 myMeterView.currentBeat = 0
                 myMeterView.setNeedsDisplay()
