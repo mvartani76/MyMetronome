@@ -91,25 +91,6 @@ public final class Metronome2 {
 
         initiazeDefaults()
         
-        // How many audio frames?
-        let bipFrames = UInt32(Constants.kBipDurationSeconds * audioFormat.sampleRate)
-        
-        // Use two triangle waves which are generate for the metronome bips.
-        // Create the PCM buffers.
-        soundBuffer.append(AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: bipFrames))
-        soundBuffer.append(AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: bipFrames))
-        
-        // Fill in the number of valid sample frames in the buffers (required).
-        soundBuffer[0]?.frameLength = bipFrames
-        soundBuffer[1]?.frameLength = bipFrames
-        
-        // Generate the metronme bips, first buffer will be A440 and the second buffer Middle C.
-        //let wg1 = TriangleWaveGenerator(sampleRate: Float(audioFormat.sampleRate), frequency: 261.6)
-        //let wg2 = TriangleWaveGenerator(sampleRate: Float(audioFormat.sampleRate))
-        
-        //wg1.render(soundBuffer[0]!)
-        //wg2.render(soundBuffer[1]!)
-        
         player.volume = 1.0
         
         // Array of urls come in pairs so only need to loop through half the array
@@ -135,9 +116,7 @@ public final class Metronome2 {
 
             let songFormat = audioFile_hi.processingFormat
             sampleRateSong = Float(songFormat.sampleRate)
-            print("sampleRateSong = \(sampleRateSong)")
             lengthSongSeconds = Float(songLengthSamples_hi) / sampleRateSong
-            print("lengthSongSeconds = \(lengthSongSeconds)")
 
             buffer_hi[2*i] = AVAudioPCMBuffer(pcmFormat: audioFile_hi.processingFormat, frameCapacity: AVAudioFrameCount(/*audioFile_hi.length*/ 8000))!
             do {
@@ -162,8 +141,6 @@ public final class Metronome2 {
     deinit {
         self.stop()
         engine.detach(player)
-        soundBuffer[0] = nil
-        soundBuffer[1] = nil
     }
     
     // The start function has two input parameters used for synchronizing with display.
