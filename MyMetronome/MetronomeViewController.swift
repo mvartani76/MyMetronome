@@ -110,7 +110,6 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet var startStopButton: UIButton!
     @IBOutlet var topLabel: UILabel!
-    @IBOutlet var tickLabel: UILabel!
     @IBOutlet var bpmLabel: UILabel!
     @IBOutlet var incBPMButton: UIButton!
     @IBOutlet var decBPMButton: UIButton!
@@ -177,8 +176,6 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let mySound = UserDefaults.standard.string(forKey: "clickSounds") ?? soundsData[0]
         resetMetroSwitchState = UserDefaults.standard.bool(forKey: "resetMetroState")
 
-        print("reset state = \(resetMetroSwitchState)")
-        
         // Update the fonts
         updateMetronomeFonts(customFontType: myFont)
 
@@ -309,7 +306,6 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
         myMeterView.currentBeat = 0
         metronome.beatNumber = 0
         myMeterView.setNeedsDisplay()
-        print("update time signature")
     }
     
     func updateMeterLabel() {
