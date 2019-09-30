@@ -139,9 +139,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Update picker positions to previously selected/stored value
         let fontIndex = fontData.firstIndex(of: customFont) ?? 0
         let colorIndex = colorData.firstIndex(of: customColorScheme) ?? 0
+        let soundIndex = soundsData.firstIndex(of: customSounds) ?? 0
 
         fontPickerView.selectRow(fontIndex, inComponent: 0, animated: true)
         colorPickerView.selectRow(colorIndex, inComponent: 0, animated: true)
+        soundsPickerView.selectRow(soundIndex, inComponent: 0, animated: true)
     }
     
     public func updateSettingsFonts(customFontType: String) {
