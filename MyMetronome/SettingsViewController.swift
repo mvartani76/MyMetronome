@@ -13,12 +13,16 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // Font/Color Picker Data
     var fontData = ["Ember", "Grinched", "PartyLetPlain", "GooddogPlain"]
     var colorData = ["Blues", "Pinks", "Purples", "Greens"]
+    var soundsData = ["Woodblocks", "Blips"]
  
     var customFont: String = ""
     var customColorScheme: String = ""
+    var customSounds: String = ""
     
     @IBOutlet var fontPickerView: UIPickerView!
     @IBOutlet var colorPickerView: UIPickerView!
+    @IBOutlet var soundsPickerView: UIPickerView!
+    @IBOutlet var soundsLabel: UILabel!
     @IBOutlet var colorLabel: UILabel!
     @IBOutlet var fontLabel: UILabel!
     @IBOutlet var topLabel: UILabel!
@@ -34,8 +38,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if pickerView == fontPickerView {
             return fontData.count
         }
-        else {
+        else if pickerView == colorPickerView {
             return colorData.count
+        }
+        else {
+            return soundsData.count
         }
     }
     
@@ -44,8 +51,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if pickerView == fontPickerView {
             return fontData[row]
         }
-        else {
+        else if pickerView == colorPickerView {
             return colorData[row]
+        }
+        else {
+            return soundsData[row]
         }
     }
     
@@ -55,13 +65,17 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             UserDefaults.standard.set(customFont, forKey: "font")
             updateSettingsFonts(customFontType: customFont)
         }
-        else {
+        else if pickerView == colorPickerView {
             customColorScheme = colorData[row]
             UserDefaults.standard.set(customColorScheme, forKey: "colorScheme")
+        }
+        else {
+            customSounds = soundsData[row]
         }
         // Need to reload the components to get the font change to take effect
         fontPickerView.reloadAllComponents()
         colorPickerView.reloadAllComponents()
+        soundsPickerView.reloadAllComponents()
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -86,8 +100,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
         if pickerView == fontPickerView {
             label.text = fontData[row]
-        } else {
+        } else if pickerView == colorPickerView {
             label.text = colorData[row]
+        } else {
+            label.text = soundsData[row]
         }
 
         return label
@@ -101,6 +117,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.fontPickerView.dataSource = self
         self.colorPickerView.delegate = self
         self.colorPickerView.dataSource = self
+        self.soundsPickerView.delegate = self
+        self.soundsPickerView.dataSource = self
         
         customFont = fontData[0]
         customColorScheme = colorData[0]
@@ -128,6 +146,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         var customFontTitleSizeVar: CGFloat
         var customFontLabelSizeVar: CGFloat
         var customColorLabelSizeVar: CGFloat
+        var customSoundsLabelSizeVar: CGFloat
         var customResetMetroLabelSizeVar: CGFloat
         
         switch customFontType {
@@ -135,32 +154,38 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.emberFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.emberColorLabelSize
+            customSoundsLabelSizeVar = CustomFontConstants.emberSoundsLabelSize
             customResetMetroLabelSizeVar = CustomFontConstants.emberResetMetroLabelSize
         case fontData[1]:
             customFontTitleSizeVar = CustomFontConstants.grinchedFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.grinchedFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.grinchedColorLabelSize
+            customSoundsLabelSizeVar = CustomFontConstants.grinchedSoundsLabelSize
             customResetMetroLabelSizeVar = CustomFontConstants.grinchedResetMetroLabelSize
         case fontData[2]:
             customFontTitleSizeVar = CustomFontConstants.partyPlainFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.partyPlainFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.partyPlainColorLabelSize
+            customSoundsLabelSizeVar = CustomFontConstants.partyPlainSoundsLabelSize
             customResetMetroLabelSizeVar = CustomFontConstants.partyPlainResetMetroLabelSize
         case fontData[3]:
             customFontTitleSizeVar = CustomFontConstants.gooddogFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.gooddogFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.gooddogColorLabelSize
+            customSoundsLabelSizeVar = CustomFontConstants.gooddogSoundsLabelSize
             customResetMetroLabelSizeVar = CustomFontConstants.gooddogResetMetroLabelSize
         default:
             customFontTitleSizeVar = CustomFontConstants.emberFontTitleSize
             customFontLabelSizeVar = CustomFontConstants.emberFontLabelSize
             customColorLabelSizeVar = CustomFontConstants.emberColorLabelSize
+            customSoundsLabelSizeVar = CustomFontConstants.emberSoundsLabelSize
             customResetMetroLabelSizeVar = CustomFontConstants.emberResetMetroLabelSize
         }
 
         topLabel.font = UIFont(name: customFont, size: customFontTitleSizeVar)
         fontLabel.font = UIFont(name: customFont, size: customFontLabelSizeVar)
         colorLabel.font = UIFont(name: customFont, size: customColorLabelSizeVar)
+        soundsLabel.font = UIFont(name: customFont, size: customSoundsLabelSizeVar)
         resetMetroLabel.font = UIFont(name: customFont, size: customResetMetroLabelSizeVar)
     }
 
