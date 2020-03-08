@@ -415,6 +415,16 @@ https://github.com/xiangyu-sun/XSMetronome/blob/master/Metronome/MainViewControl
             customMiddleLayer1FillColor = CustomColorConstants.purplesKnobMiddleLayer1FillColor
             customMiddleLayer2FillColor = CustomColorConstants.purplesKnobMiddleLayer2FillColor
             customPointerLayerStrokeColor = CustomColorConstants.purplesKnobPointerLayerStrokeColor
+        case colorData[3]:
+            customPrimaryButtonEnabledColor = CustomColorConstants.greensPrimaryButtonEnabledColor
+            customPrimaryButtonDisabledColor = CustomColorConstants.greensPrimaryButtonDisabledColor
+            customSecondaryButtonColor = CustomColorConstants.greensSecondaryButtonColor
+            customPrimaryStrokeColor = CustomColorConstants.greensMeterViewStrokeColor
+            customOuterLayerFillColor = CustomColorConstants.greensKnobOuterLayerFillColor
+            customOuterLayerStrokeColor = CustomColorConstants.greensKnobOuterLayerStrokeColor
+            customMiddleLayer1FillColor = CustomColorConstants.greensKnobMiddleLayer1FillColor
+            customMiddleLayer2FillColor = CustomColorConstants.greensKnobMiddleLayer2FillColor
+            customPointerLayerStrokeColor = CustomColorConstants.greensKnobPointerLayerStrokeColor
         default:
             customPrimaryButtonEnabledColor = CustomColorConstants.bluesPrimaryButtonEnabledColor
             customPrimaryButtonDisabledColor = CustomColorConstants.bluesPrimaryButtonDisabledColor
