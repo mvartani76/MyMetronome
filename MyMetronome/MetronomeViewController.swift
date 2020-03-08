@@ -200,6 +200,8 @@ class MetronomeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Need to reload all components to update the font if changed in settings view controller
         numBeatsPickerView.reloadAllComponents()
         beatNotePickerView.reloadAllComponents()
+        self.myMeterView.setNeedsDisplay()
+        self.myMeterView.updateMeter()
     }
     
     // Save the currentBeat according to the MeterView in UserDefaults before navigating away from current ViewController
